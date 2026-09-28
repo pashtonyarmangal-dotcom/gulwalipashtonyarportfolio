@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Login — Gul Wali</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body>
+  <main class="login-wrap">
+    <div class="login-box">
+      <h1 class="login-box__title">GUL WALI — ADMIN</h1>
+      <p class="login-box__sub">Demo dashboard. Data is stored in your browser only.</p>
+
+      <div class="admin-warning" style="margin-bottom:var(--sp-5)">
+        <strong>Not secure.</strong> This is a client-side demo gate. It provides
+        <em>no real security</em> and must not be used to protect any real data.
+        A production deployment requires server-side authentication.
+      </div>
+
+      <form id="login-form" class="form">
+        <div class="field">
+          <label for="pass">Demo passphrase</label>
+          <input type="password" id="pass" name="pass" autocomplete="current-password" required>
+          <span class="field__error" id="login-error" aria-live="polite"></span>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn btn--primary" type="submit">Enter Dashboard</button>
+          <a class="btn btn--ghost" href="../index.html">← Back to site</a>
+        </div>
+      </form>
+
+      <p class="card__text" style="margin-top:var(--sp-5);font-size:.8125rem">
+        Default passphrase: <code>gulwali-demo</code><br>
+        Change it in <code>admin/js/admin.js</code> or via Settings after logging in.
+      </p>
+    </div>
+  </main>
+
+  <script type="module">
+    import storage from '../js/storage.js';
+
+    const KEY = 'admin_session';
+    const DEFAULT_PASS = 'gulwali-demo';
+
+    // Already logged in?
+    if (storage.get(KEY, null) === 'active') {
+      location.replace('dashboard.html');
+    }
+
+    const form = document.getElementById('login-form');
+    const errorEl = document.getElementById('login-error');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = form.elements.pass.value;
+      const stored = storage.get('admin_pass', DEFAULT_PASS);
+
+      if (value === stored) {
+        storage.set(KEY, 'active');
+        location.replace('dashboard.html');
+      } else {
+        errorEl.textContent = 'Incorrect passphrase.';
+        form.elements.pass.setAttribute('aria-invalid', 'true');
+        form.elements.pass.focus();
+      }
+    });
+  </script>
+</body>
+</html>

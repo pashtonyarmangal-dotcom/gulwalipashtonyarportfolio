@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="G Player media player cover">
+  <rect width="800" height="480" fill="#0a0d10"/>
+  <g stroke="#2bff88" stroke-opacity=".1"><path d="M0 80h800M0 160h800M0 240h800M0 320h800M0 400h800"/></g>
+  <circle cx="400" cy="210" r="76" fill="none" stroke="#2bff88" stroke-width="3"/>
+  <path d="M378 176l58 34-58 34z" fill="#2bff88"/>
+  <text x="400" y="355" font-family="monospace" font-size="58" font-weight="700" fill="#2bff88" text-anchor="middle">G PLAYER</text>
+  <text x="400" y="395" font-family="monospace" font-size="22" fill="#8b98a5" text-anchor="middle">media player</text>
+  <rect x="24" y="24" width="752" height="432" rx="16" fill="none" stroke="#2bff88" stroke-opacity=".35" stroke-width="2"/>
+</svg>

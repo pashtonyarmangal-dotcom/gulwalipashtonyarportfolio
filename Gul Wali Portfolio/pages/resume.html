@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../" data-title-key="nav.resume">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume — Gul Wali</title>
+  <meta name="description" content="Resume of Gul Wali: web designer, web developer and software developer. Skills, experience, education and contact details.">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="canonical" href="https://example.com/pages/resume.html">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Resume — Gul Wali">
+  <meta property="og:description" content="Skills, experience and education of Gul Wali.">
+  <meta property="og:url" content="https://example.com/pages/resume.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      try {
+        var l = localStorage.getItem('gw_lang'); if (l) l = JSON.parse(l);
+        if (l === 'ps') { document.documentElement.lang = 'ps'; document.documentElement.dir = 'rtl'; }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Gul Wali — home">
+        <span class="brand-mark" aria-hidden="true">GW</span>
+        <span class="brand-text">GUL WALI</span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav-link" href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a class="nav-link" href="../index.html#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a class="nav-link" href="projects.html" data-i18n="nav.projects">Projects</a></li>
+          <li><a class="nav-link" href="services.html" data-i18n="nav.services">Services</a></li>
+          <li><a class="nav-link" href="resume.html" data-i18n="nav.resume">Resume</a></li>
+          <li><a class="nav-link" href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav-link" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+       <!-- langyage change button
+         <button class="icon-btn" type="button" data-lang-toggle data-i18n-aria-label="nav.switchLang" aria-label="Switch language">
+          <span data-lang-label>پښتو</span>
+        </button>
+      -->
+        <button class="icon-btn" type="button" data-theme-toggle data-i18n-aria-label="nav.switchTheme" aria-label="Switch theme" aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">◐</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-i18n-aria-label="nav.menu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <p class="breadcrumb">
+          <a href="../index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.resume">Resume</span>
+        </p>
+        <h1 class="page-title">Resume</h1>
+        <p class="page-sub">Skills, experience, education and contact details.</p>
+
+        <div class="btn-row" style="margin-top:var(--sp-5)">
+          <a class="btn btn--primary" href="../assets/resume/gul-wali-resume.pdf" data-resume-link
+             data-i18n="resume.view">View Resume</a>
+          <a class="btn btn--ghost" href="../assets/resume/gul-wali-resume.pdf" data-resume-link download
+             data-i18n="resume.download">Download Resume</a>
+          <button class="btn btn--ghost" type="button" id="print-resume" data-i18n="resume.print">Print / Save as PDF</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid--2" style="align-items:start">
+          <div>
+            <h2 class="section-title" style="font-size:1.35rem" data-i18n="resume.profile">Profile</h2>
+            <p class="card__text" id="resume-bio" style="margin-top:var(--sp-3)">Loading profile…</p>
+
+            <h2 class="section-title" style="font-size:1.35rem;margin-top:var(--sp-6)" data-i18n="resume.contact">Contact</h2>
+            <dl class="id-card__meta" id="identity-meta" style="margin-top:var(--sp-3)"></dl>
+
+            <h2 class="section-title" style="font-size:1.35rem;margin-top:var(--sp-6)" data-i18n="resume.skills">Skills</h2>
+            <div class="grid grid--2" id="skills-grid" style="margin-top:var(--sp-4)">
+              <p class="state">Loading skills…</p>
+            </div>
+          </div>
+
+          <aside>
+            <h2 class="section-title" style="font-size:1.35rem" data-i18n="resume.experience">Experience</h2>
+            <div class="timeline" id="experience-timeline" style="margin-top:var(--sp-4)">
+              <p class="state">Loading experience…</p>
+            </div>
+
+            <h2 class="section-title" style="font-size:1.35rem;margin-top:var(--sp-6)" data-i18n="resume.education">Education</h2>
+            <div class="timeline" id="education-timeline" style="margin-top:var(--sp-4)">
+              <p class="state">Loading education…</p>
+            </div>
+          </aside>
+        </div>
+
+        <p class="card__text" id="resume-note" style="margin-top:var(--sp-6);font-size:.8125rem"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-brand__name">GUL WALI</p>
+          <p class="footer-brand__role">Web Designer &amp; Software Developer</p>
+          <p class="footer-brand__text" data-i18n="footer.tagline">Building useful digital experiences.</p>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="achievements.html" data-i18n="nav.achievements">Achievements</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.social">Social Links</h3>
+          <div class="social-row" id="footer-social" style="margin-top:0"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> Gul Wali. <span data-i18n="footer.rights">All Rights Reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from '../js/theme.js';
+    import { initLanguage, t, localized } from '../js/language.js';
+    import { initNavigation } from '../js/navigation.js';
+    import { initAnimations } from '../js/animations.js';
+    import { buildSocialLinks } from '../js/app.js';
+    import { loadData, rootPath, describeLoadError } from '../js/data.js';
+
+    initTheme();
+    initLanguage();
+    initNavigation();
+
+    const setState = (el, msg, isError = false) => {
+      if (!el) return;
+      el.textContent = '';
+      const p = document.createElement('p');
+      p.className = 'state' + (isError ? ' state--error' : '');
+      p.textContent = msg;
+      el.appendChild(p);
+    };
+
+    const escapeHtml = (s) => String(s ?? '')
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;').replace(/'/g,'&#039;');
+
+    async function render() {
+      try {
+        const [profile, skills, experience, education] = await Promise.all([
+          loadData('profile'), loadData('skills'),
+          loadData('experience'), loadData('education')
+        ]);
+
+        // Bio
+        const bio = document.getElementById('resume-bio');
+        if (bio) bio.textContent = localized(profile, 'bio');
+
+        // Contact meta
+        const meta = document.getElementById('identity-meta');
+        if (meta) {
+          meta.textContent = '';
+          const rows = [
+            ['Email', profile.email || 'Not configured'],
+            ['Phone', profile.phone || 'Not configured'],
+            ['Location', profile.location || 'Not configured'],
+            ['Availability', profile.availability === 'unavailable' ? 'Unavailable' : 'Available']
+          ];
+          rows.forEach(([k, v]) => {
+            const d = document.createElement('div');
+            d.innerHTML = `<dt>${escapeHtml(k)}</dt><dd>${escapeHtml(v)}</dd>`;
+            meta.appendChild(d);
+          });
+        }
+
+        // Skills (compact list)
+        const skillsGrid = document.getElementById('skills-grid');
+        if (skillsGrid) {
+          skillsGrid.textContent = '';
+          (skills.categories || []).forEach((cat) => {
+            const card = document.createElement('div');
+            card.className = 'skill-cat';
+            card.innerHTML = `
+              <div class="skill-cat__head">
+                <span class="skill-cat__icon" aria-hidden="true">${escapeHtml(cat.icon || '{}')}</span>
+                <h3 class="skill-cat__title">${escapeHtml(localized(cat, 'title'))}</h3>
+              </div>
+              ${(cat.skills || []).map((s) => `
+                <div class="skill-item">
+                  <div class="skill-item__top">
+                    <span>${escapeHtml(localized(s, 'name'))}</span>
+                    <span class="skill-item__level">${escapeHtml(localized(s, 'label'))}</span>
+                  </div>
+                </div>`).join('')}
+            `;
+            skillsGrid.appendChild(card);
+          });
+        }
+
+        // Timelines
+        const renderTimeline = (container, items) => {
+          if (!container) return;
+          container.textContent = '';
+          items.forEach((item) => {
+            const el = document.createElement('div');
+            el.className = 'timeline__item';
+            el.innerHTML = `
+              <div class="timeline__date">${escapeHtml(localized(item, 'date'))}</div>
+              <h3 class="timeline__title">${escapeHtml(localized(item, 'title'))}</h3>
+              <p class="timeline__org">${escapeHtml(localized(item, 'org'))}</p>
+              <p class="timeline__desc">${escapeHtml(localized(item, 'description'))}</p>
+            `;
+            container.appendChild(el);
+          });
+        };
+        renderTimeline(document.getElementById('experience-timeline'), experience.items || []);
+        renderTimeline(document.getElementById('education-timeline'), education.items || []);
+
+        // Resume file note
+        const note = document.getElementById('resume-note');
+        if (note) {
+          const url = profile.resumeUrl ? rootPath(profile.resumeUrl) : '';
+          note.textContent = url
+            ? `Resume file: ${url}`
+            : t('resume.noFile');
+        }
+
+        // Social
+        const { frag, count } = buildSocialLinks(profile);
+        const footerSocial = document.getElementById('footer-social');
+        if (footerSocial) {
+          footerSocial.textContent = '';
+          if (count === 0) {
+            footerSocial.innerHTML = `<p class="card__text" style="font-size:.8125rem">No social links configured yet.</p>`;
+          } else {
+            footerSocial.appendChild(frag);
+          }
+        }
+      } catch (err) {
+        const message = describeLoadError(err);
+        setState(document.getElementById('skills-grid'), message, true);
+        setState(document.getElementById('experience-timeline'), message, true);
+        setState(document.getElementById('education-timeline'), message, true);
+      }
+
+      document.querySelectorAll('[data-year]').forEach((el) => {
+        el.textContent = String(new Date().getFullYear());
+      });
+    }
+
+    document.getElementById('print-resume')?.addEventListener('click', () => window.print());
+
+    render();
+    initAnimations();
+    document.addEventListener('gw:language', render);
+  </script>
+</body>
+</html>

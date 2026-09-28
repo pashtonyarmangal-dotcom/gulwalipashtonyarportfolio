@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings — Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body class="admin-body">
+  <aside class="admin-side" id="admin-sidebar"></aside>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div>
+        <h1 class="admin-title">Settings</h1>
+        <p class="admin-sub">Personal information, social links and preferences.</p>
+      </div>
+      <div class="a-btn-row">
+        <button class="a-btn a-btn--primary" type="button" id="save-settings">Save settings</button>
+        <button class="a-btn" type="button" id="export-settings">Export profile.json</button>
+      </div>
+    </div>
+
+    <div class="admin-warning">
+      <strong>Demo mode.</strong> Settings are stored in LocalStorage only. Export the JSON and
+      replace <code>data/profile.json</code> to publish for all visitors.
+    </div>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head"><h2 class="admin-panel__title">Personal information</h2></div>
+      <form class="form" id="settings-form">
+        <div class="form-row">
+          <div class="field"><label for="s-name">Name</label><input type="text" id="s-name" data-k="name"></div>
+          <div class="field"><label for="s-namePs">Name (Pashto)</label><input type="text" id="s-namePs" data-k="namePs"></div>
+        </div>
+
+        <div class="form-row">
+          <div class="field"><label for="s-email">Email</label><input type="email" id="s-email" data-k="email"></div>
+          <div class="field"><label for="s-phone">Phone</label><input type="tel" id="s-phone" data-k="phone"></div>
+          <div class="field"><label for="s-location">Location</label><input type="text" id="s-location" data-k="location"></div>
+        </div>
+
+        <div class="field"><label for="s-bio">Bio (English)</label><textarea id="s-bio" data-k="bio" style="min-height:110px"></textarea></div>
+        <div class="field"><label for="s-bioPs">Bio (Pashto)</label><textarea id="s-bioPs" data-k="bioPs" style="min-height:110px"></textarea></div>
+
+        <div class="form-row">
+          <div class="field"><label for="s-headline">Headline (English)</label><input type="text" id="s-headline" data-k="headline"></div>
+          <div class="field"><label for="s-headlinePs">Headline (Pashto)</label><input type="text" id="s-headlinePs" data-k="headlinePs"></div>
+        </div>
+
+        <div class="field"><label for="s-desc">Description (English)</label><textarea id="s-desc" data-k="description" style="min-height:90px"></textarea></div>
+        <div class="field"><label for="s-descPs">Description (Pashto)</label><textarea id="s-descPs" data-k="descriptionPs" style="min-height:90px"></textarea></div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="s-availability">Availability</label>
+            <select id="s-availability" data-k="availability">
+              <option value="available">Available</option>
+              <option value="unavailable">Unavailable</option>
+            </select>
+          </div>
+          <div class="field"><label for="s-resumeUrl">Resume file path</label><input type="text" id="s-resumeUrl" data-k="resumeUrl"></div>
+          <div class="field"><label for="s-profileImage">Profile image path</label><input type="text" id="s-profileImage" data-k="profileImage"></div>
+        </div>
+
+        <div class="field">
+          <label for="s-contactEndpoint">Contact backend endpoint (leave empty if none)</label>
+          <input type="url" id="s-contactEndpoint" data-k="contactEndpoint" placeholder="https://your-server.example/api/contact">
+        </div>
+      </form>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head"><h2 class="admin-panel__title">Social links</h2></div>
+      <form class="form" id="social-form">
+        <div class="form-row">
+          <div class="field"><label for="so-github">GitHub</label><input type="url" id="so-github" data-s="github" placeholder="https://github.com/..."></div>
+          <div class="field"><label for="so-facebook">Facebook</label><input type="url" id="so-facebook" data-s="facebook" placeholder="https://facebook.com/..."></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="so-telegram">Telegram</label><input type="url" id="so-telegram" data-s="telegram" placeholder="https://t.me/..."></div>
+          <div class="field"><label for="so-youtube">YouTube</label><input type="url" id="so-youtube" data-s="youtube" placeholder="https://youtube.com/@..."></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label for="so-linkedin">LinkedIn</label><input type="url" id="so-linkedin" data-s="linkedin" placeholder="https://linkedin.com/in/..."></div>
+          <div class="field"><label for="so-whatsapp">WhatsApp</label><input type="url" id="so-whatsapp" data-s="whatsapp" placeholder="https://wa.me/..."></div>
+        </div>
+        <div class="field"><label for="so-tiktok">TikTok</label><input type="url" id="so-tiktok" data-s="tiktok" placeholder="https://tiktok.com/@..."></div>
+        <p class="card__text" style="font-size:.8125rem">Only links with a value are displayed on the website. Leave the rest empty.</p>
+      </form>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head"><h2 class="admin-panel__title">Theme &amp; preferences</h2></div>
+      <div class="a-btn-row">
+        <button class="a-btn" type="button" id="pref-dark">Dark theme</button>
+        <button class="a-btn" type="button" id="pref-light">Light theme</button>
+        <button class="a-btn" type="button" id="pref-en">English</button>
+        <button class="a-btn" type="button" id="pref-ps">پښتو</button>
+      </div>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head"><h2 class="admin-panel__title">Admin passphrase</h2></div>
+      <form class="form" id="pass-form">
+        <div class="field">
+          <label for="np">New demo passphrase</label>
+          <input type="password" id="np" required minlength="4">
+          <span class="field__error">This protects nothing. It is a demo gate only.</span>
+        </div>
+        <div class="a-btn-row">
+          <button class="a-btn a-btn--primary" type="submit">Update passphrase</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head"><h2 class="admin-panel__title">Danger zone</h2></div>
+      <div class="a-btn-row">
+        <button class="a-btn a-btn--danger" type="button" id="reset-all">Reset ALL admin data</button>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { requireSession, renderSidebar, adminStore, toast } from './js/admin.js';
+    import storage from '../js/storage.js';
+    import { applyTheme } from '../js/theme.js';
+    import { applyLanguage } from '../js/language.js';
+
+    if (!requireSession()) throw new Error('redirecting');
+    await renderSidebar('settings.html');
+
+    let settings = await adminStore.getSettings();
+    settings.social = settings.social || {};
+
+    /* Fill form */
+    document.querySelectorAll('#settings-form [data-k]').forEach((el) => {
+      const key = el.dataset.k;
+      if (settings[key] !== undefined && settings[key] !== null) el.value = settings[key];
+    });
+
+    document.querySelectorAll('#social-form [data-s]').forEach((el) => {
+      const key = el.dataset.s;
+      el.value = settings.social[key] || '';
+    });
+
+    /* Live sync into settings object */
+    function bind(formSelector, attr, target) {
+      document.querySelectorAll(`${formSelector} [${attr}]`).forEach((el) => {
+        el.addEventListener('input', () => {
+          const key = el.getAttribute(attr);
+          if (target === 'social') {
+            settings.social[key] = el.value.trim();
+          } else {
+            settings[key] = el.value;
+          }
+        });
+        el.addEventListener('change', () => {
+          const key = el.getAttribute(attr);
+          if (target === 'social') {
+            settings.social[key] = el.value.trim();
+          } else {
+            settings[key] = el.value;
+          }
+        });
+      });
+    }
+
+    bind('#settings-form', 'data-k', 'root');
+    bind('#social-form', 'data-s', 'social');
+
+    document.getElementById('save-settings').addEventListener('click', () => {
+      adminStore.saveSettings(settings);
+      toast('Settings saved to this browser.');
+    });
+
+    document.getElementById('export-settings').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify(settings, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'profile.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      toast('profile.json exported.');
+    });
+
+    /* Preferences */
+    document.getElementById('pref-dark').addEventListener('click', () => { applyTheme('dark'); toast('Dark theme applied.'); });
+    document.getElementById('pref-light').addEventListener('click', () => { applyTheme('light'); toast('Light theme applied.'); });
+    document.getElementById('pref-en').addEventListener('click', () => { applyLanguage('en'); toast('Language set to English.'); });
+    document.getElementById('pref-ps').addEventListener('click', () => { applyLanguage('ps'); toast('ژبه پښتو ته وټاکل شوه.'); });
+
+    /* Passphrase */
+    document.getElementById('pass-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const value = document.getElementById('np').value;
+      if (value.length < 4) return;
+      storage.set('admin_pass', value);
+      document.getElementById('np').value = '';
+      toast('Demo passphrase updated.');
+    });
+
+    /* Reset everything */
+    document.getElementById('reset-all').addEventListener('click', () => {
+      if (!confirm('Delete ALL admin demo data (projects, blog, messages, content, settings)?')) return;
+      adminStore.resetAll();
+      toast('All admin data cleared.', 'error');
+      setTimeout(() => location.reload(), 900);
+    });
+  </script>
+</body>
+</html>

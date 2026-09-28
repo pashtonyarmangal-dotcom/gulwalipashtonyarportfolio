@@ -1,0 +1,74 @@
+{
+  "services": [
+    {
+      "id": "web-development",
+      "icon": "</>",
+      "title": "Web Development",
+      "titlePs": "وېب پراختیا",
+      "description": "Complete website development from structure and layout to a finished, deployable site.",
+      "descriptionPs": "د وېبپاڼې بشپړ جوړول — له جوړښت او ډیزاین څخه تر پای ته رسېدلې وېبپاڼې.",
+      "features": ["Semantic HTML5 structure", "Modern CSS architecture", "JavaScript interactivity", "Deployment-ready build"],
+      "featuresPs": ["سمانټیک HTML5 جوړښت", "عصري CSS معمارۍ", "د JavaScript متقابل عمل", "د خپرولو لپاره چمتو"]
+    },
+    {
+      "id": "responsive-websites",
+      "icon": "▢",
+      "title": "Responsive Website Development",
+      "titlePs": "ریسپانسیو وېبپاڼې",
+      "description": "Websites that work correctly on every screen, from 320px phones to large desktop displays.",
+      "descriptionPs": "هغه وېبپاڼې چې په هر سکرین سم کار کوي، له ۳۲۰px موبایل څخه تر لوی ډیسکټاپ.",
+      "features": ["Mobile-first layout", "Fluid typography and grids", "Touch-friendly interfaces", "Cross-browser testing"],
+      "featuresPs": ["موبایل لومړی ډیزاین", "انعطاف منونکې ټایپوګرافي", "د ټچ لپاره مناسب", "په بېلابېلو براوزرونو ازموینه"]
+    },
+    {
+      "id": "ui-ux",
+      "icon": "◈",
+      "title": "UI/UX Design",
+      "titlePs": "د کاروونکي تجربه او ډیزاین",
+      "description": "Interface and experience design focused on clarity, accessibility and real usability.",
+      "descriptionPs": "د انټرفیس او تجربې ډیزاین چې پر روښانتیا، لاسرسي او ریښتیني کارونې ولاړ دی.",
+      "features": ["Layout and visual hierarchy", "Accessible color and contrast", "Component design systems", "RTL and bilingual interfaces"],
+      "featuresPs": ["د پاڼې جوړښت او لیدیز ترتیب", "د لاسرسي وړ رنګونه", "د کمپوننټ سیسټم", "RTL او دوه‌ژبیز انټرفیس"]
+    },
+    {
+      "id": "web-applications",
+      "icon": "{}",
+      "title": "Web Applications",
+      "titlePs": "وېب اپلیکیشنونه",
+      "description": "Data-driven web applications with real functionality, state handling and clean architecture.",
+      "descriptionPs": "د ډیټا پر بنسټ وېب اپلیکیشنونه د ریښتیني فعالیت او پاک جوړښت سره.",
+      "features": ["Client-side data handling", "Form and validation logic", "API integration readiness", "Local and remote storage"],
+      "featuresPs": ["په کلاینټ ډیټا اداره", "د فورمې اعتبار او منطق", "د API لپاره چمتو", "ځایي او لرې ذخیره"]
+    },
+    {
+      "id": "android-apps",
+      "icon": "▷",
+      "title": "Android Applications",
+      "titlePs": "اندروید اپلیکیشنونه",
+      "description": "Android applications built around simple, focused functionality and comfortable mobile reading.",
+      "descriptionPs": "اندروید اپلیکیشنونه چې پر ساده او متمرکز فعالیت ولاړ دي.",
+      "features": ["Native Android layouts", "Offline content storage", "RTL and Pashto support", "Clean, minimal interfaces"],
+      "featuresPs": ["اصلي اندروید لې‌آوټونه", "افلاین محتوا", "د پښتو RTL ملاتړ", "پاک او ساده انټرفیس"]
+    },
+    {
+      "id": "maintenance",
+      "icon": "⚙",
+      "title": "Website Maintenance",
+      "titlePs": "د وېبپاڼې ساتنه",
+      "description": "Ongoing updates, content changes, bug fixes and performance improvements for existing sites.",
+      "descriptionPs": "دوامداره تازه‌کول، د محتوا بدلون، د تېروتنو سمول او د چټکتیا ښه‌والی.",
+      "features": ["Content updates", "Bug fixing", "Performance tuning", "Accessibility improvements"],
+      "featuresPs": ["د محتوا تازه‌کول", "د ستونزو سمول", "د چټکتیا ښه‌والی", "د لاسرسي ښه‌والی"]
+    },
+    {
+      "id": "custom-solutions",
+      "icon": "★",
+      "title": "Custom Digital Solutions",
+      "titlePs": "دودیز ډیجیټل حلونه",
+      "description": "Custom tools and small digital products built around a specific real problem.",
+      "descriptionPs": "دودیز وسیلې او کوچني ډیجیټل محصولات د یوې مشخصې ستونزې لپاره.",
+      "features": ["Requirement discussion", "Prototype and iteration", "Full implementation", "Handover and documentation"],
+      "featuresPs": ["د اړتیاوو خبرې", "پروټوټایپ او تکرار", "بشپړ پلي کول", "سپارل او اسناد"]
+    }
+  ]
+}

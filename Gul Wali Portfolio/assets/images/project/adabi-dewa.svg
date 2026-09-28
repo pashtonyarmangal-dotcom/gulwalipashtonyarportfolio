@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Adabi Dewa literary project cover">
+  <rect width="800" height="480" fill="#0b1012"/>
+  <g stroke="#2bff88" stroke-opacity=".1"><path d="M0 100h800M0 200h800M0 300h800M0 400h800"/></g>
+  <path d="M300 320V170h200v150" fill="none" stroke="#2bff88" stroke-width="3"/>
+  <path d="M340 200h120M340 240h120M340 280h80" stroke="#2bff88" stroke-opacity=".6" stroke-width="3"/>
+  <text x="400" y="400" font-family="sans-serif" font-size="64" font-weight="700" fill="#2bff88" text-anchor="middle">ادبي ډیوه</text>
+  <rect x="24" y="24" width="752" height="432" rx="16" fill="none" stroke="#2bff88" stroke-opacity=".35" stroke-width="2"/>
+</svg>

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Blog cover: accessible web forms">
+  <rect width="800" height="480" fill="#0c0a12"/>
+  <g stroke="#2bff88" stroke-opacity=".12"><path d="M0 160h800M0 320h800"/></g>
+  <rect x="280" y="150" width="240" height="180" rx="10" fill="none" stroke="#2bff88" stroke-width="3"/>
+  <path d="M310 190h180M310 230h180M310 270h100" stroke="#2bff88" stroke-opacity=".6" stroke-width="3"/>
+  <text x="400" y="400" font-family="monospace" font-size="30" fill="#8b98a5" text-anchor="middle">accessible forms</text>
+</svg>

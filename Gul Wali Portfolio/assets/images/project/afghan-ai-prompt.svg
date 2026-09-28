@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Afghan AI Prompt project cover">
+  <rect width="800" height="480" fill="#0a0f14"/>
+  <g stroke="#2bff88" stroke-opacity=".12"><path d="M0 120h800M0 240h800M0 360h800"/><path d="M200 0v480M400 0v480M600 0v480"/></g>
+  <circle cx="400" cy="200" r="70" fill="none" stroke="#2bff88" stroke-width="3"/>
+  <circle cx="400" cy="200" r="24" fill="#2bff88" opacity=".7"/>
+  <text x="400" y="330" font-family="monospace" font-size="56" font-weight="700" fill="#2bff88" text-anchor="middle">AFGHAN AI PROMPT</text>
+  <text x="400" y="375" font-family="monospace" font-size="24" fill="#8b98a5" text-anchor="middle">prompt manager concept</text>
+  <rect x="24" y="24" width="752" height="432" rx="16" fill="none" stroke="#2bff88" stroke-opacity=".35" stroke-width="2"/>
+</svg>

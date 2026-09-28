@@ -1,0 +1,41 @@
+{
+  "categories": ["All", "CSS", "JavaScript", "Accessibility", "UI/UX"],
+  "posts": [
+    {
+      "id": "css-architecture",
+      "title": "Structuring CSS So It Does Not Fall Apart",
+      "titlePs": "CSS داسې تنظیم کړه چې نه خرابیږي",
+      "category": "CSS",
+      "date": "2026-01-12",
+      "readTime": 6,
+      "image": "assets/images/blog/blog-1.svg",
+      "excerpt": "How a token layer, a reset, core styles and a responsive layer keep a stylesheet readable long after the first week.",
+      "excerptPs": "څنګه د ټوکنونو، ریسټ، اصلي سټایلونو او ریسپانسیو طبقو پر بنسټ CSS د اوږدې مودې لپاره د لوستلو وړ پاتې کېږي.",
+      "content": "<h2>Why most stylesheets rot</h2><p>Most CSS problems are not caused by CSS. They are caused by a lack of structure. Colors get hardcoded in twelve places, spacing values become arbitrary, and every new component reinvents a card.</p><h2>Four layers</h2><p>A simple four-layer split solves most of it:</p><ul><li><code>variables.css</code> — every color, radius, shadow and spacing value in one place</li><li><code>reset.css</code> — a predictable baseline across browsers</li><li><code>style.css</code> — components and layout built only from tokens</li><li><code>responsive.css</code> — media queries, kept in one file</li></ul><h2>The rule that matters</h2><p>Never write a raw color or a raw pixel value inside a component. If a value is not in the token layer, add it there first. This single rule is what keeps a project consistent six months later.</p><h2>What you get</h2><p>Theme switching becomes a variable swap. A rebrand becomes one file. And a new component is assembled from existing tokens instead of invented from scratch.</p>"
+    },
+    {
+      "id": "accessible-forms",
+      "title": "Accessible Forms: Small Details That Change Everything",
+      "titlePs": "د لاسرسي وړ فورمې: کوچني توضیحات چې ټول بدلوي",
+      "category": "Accessibility",
+      "date": "2026-01-05",
+      "readTime": 5,
+      "image": "assets/images/blog/blog-2.svg",
+      "excerpt": "Labels, error messages, focus states and validation timing — the four things that decide whether a form is usable.",
+      "excerptPs": "لیبلونه، د تېروتنې پیغامونه، د فوکس حالت او د اعتبار وخت — څلور هغه څه چې د فورمې کارونې وړتیا ټاکي.",
+      "content": "<h2>Start with a real label</h2><p>A placeholder is not a label. Placeholders disappear the moment someone starts typing, and screen readers handle them inconsistently. Always use a real <code>&lt;label&gt;</code> tied to the input with <code>for</code> and <code>id</code>.</p><h2>Validate at the right moment</h2><p>Validating while someone is still typing is hostile. Validate on blur and on submit. Show the error next to the field, not in a banner at the top of the page.</p><h2>Say what went wrong</h2><p>\"Invalid input\" tells the user nothing. \"Please enter a valid email address, for example name@example.com\" tells them exactly what to do.</p><h2>Never remove focus</h2><p>Keyboard users need to see where they are. Use <code>:focus-visible</code> with a clear, high-contrast outline. Removing outlines without a replacement is one of the most common accessibility failures on the web.</p><h2>Announce success too</h2><p>Use <code>role=\"status\"</code> on the success message so screen reader users are told the form submitted. Without it, nothing appears to happen.</p>"
+    },
+    {
+      "id": "rtl-interface-design",
+      "title": "Building an Interface That Works in Both LTR and RTL",
+      "titlePs": "داسې انټرفیس جوړول چې LTR او RTL دواړو کې کار کوي",
+      "category": "UI/UX",
+      "date": "2025-12-20",
+      "readTime": 7,
+      "image": "assets/images/blog/blog-3.svg",
+      "excerpt": "Logical CSS properties, direction-aware icons and the real cost of treating RTL as an afterthought.",
+      "excerptPs": "منطقي CSS خصوصیات، د لوري پوه ایکونونه او هغه لګښت چې RTL د وروستي فکر په توګه لري.",
+      "content": "<h2>Stop using left and right</h2><p>Physical properties like <code>margin-left</code> and <code>padding-right</code> break the moment direction flips. Use logical properties instead: <code>margin-inline-start</code>, <code>padding-inline-end</code>, <code>inset-inline-start</code>.</p><h2>Let the document carry direction</h2><p>Set <code>dir=\"rtl\"</code> on the <code>&lt;html&gt;</code> element. Everything else — text alignment, flex order, scrollbars — follows automatically. Fighting it with manual overrides creates more bugs than it fixes.</p><h2>Icons need direction awareness</h2><p>Arrows, chevrons and back buttons must flip. Logos, play buttons and clocks must not. Treat this as a per-icon decision, not a global one.</p><h2>Typography is different</h2><p>Arabic-script fonts need different line heights and letter spacing than Latin fonts. Set a separate font stack for RTL and adjust <code>line-height</code> — the Latin values will look cramped.</p><h2>Test with real content</h2><p>Short English strings hide layout problems. Test with real Pashto sentences, which are often longer and have different word shapes. That is where the bugs actually appear.</p>"
+    }
+  ]
+}

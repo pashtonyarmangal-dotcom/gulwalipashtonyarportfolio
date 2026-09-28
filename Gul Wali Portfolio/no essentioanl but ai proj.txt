@@ -1,0 +1,68 @@
+/*
+type of giving new project AI Prompt
+{
+      "id": "afghan-ai-prompt",
+      "title": "Afghan AI Prompt",
+      "titlePs": "افغان AI پرامپټ",
+      "category": "AI",
+      "tags": ["AI", "JavaScript", "Web"],
+      "technologies": ["HTML", "CSS", "JavaScript", "LocalStorage"],
+      "description": "A prompt management concept for collecting, organising and reusing AI prompts in one place.",
+      "descriptionPs": "د AI پرامپټونو د راټولولو، تنظیمولو او بیا کارولو مفهوم.",
+      "status": "in-progress yet no completed",
+      "featured": true,
+      "image": "assets/images/projects/afghan-ai-prompt.svg",
+      "github": "https://github.com/pashtonyarmangal-dotcom",
+      "live": "https://t.me/hararkhezalekana",
+      "details": {
+        "overview": "Afghan AI Prompt is a concept application for storing, tagging and quickly reusing AI prompts. It is aimed at users who work with AI tools daily and keep losing good prompts.",
+        "problem": "Good prompts are usually saved in random notes apps, chat histories or text files with no structure and no search.",
+        "solution": "A structured prompt library with categories, tags, search and quick copy, plus an optional AI API connection when the owner supplies a key.",
+        "features": [
+          "Create, edit and delete prompts",
+          "Category and tag organisation",
+          "Fast search across title and body",
+          "One-click copy to clipboard",
+          "Import and export as JSON"
+        ],
+        "challenges": "Designing a data model flexible enough for many prompt types without making the interface complicated.",
+        "learned": "Practical experience with client-side data modelling, JSON import/export and building a searchable list interface.",
+        "screenshots": []
+      }
+    },
+
+
+    */
+
+
+{
+      "id": "g-player",
+      "title": "G Player",
+      "titlePs": "G پلیر",
+      "category": "Mobile",
+      "tags": ["Mobile", "JavaScript"],
+      "technologies": ["Android", "Media APIs"],
+      "description": "A media player project focused on simple, reliable local audio and video playback.",
+      "descriptionPs": "د میډیا پلیر پروژه د ساده او باوري ځایي غږ او ویډیو پلی کولو لپاره.",
+      "status": "completed",
+      "featured": false,
+      "image": "assets/images/projects/g-player.svg",
+      "github": "https://github.com/pashtonyarmangal-dotcom",
+      "live": "https://t.me/hararkhezalekana",
+      "details": {
+        "overview": "G Player is a media player project built to explore reliable playback, simple controls and a clean player interface.",
+        "problem": "Many simple media players are either loaded with features nobody uses or fail on common local file formats.",
+        "solution": "A minimal player with clear controls, playlist handling and proper playback state management.",
+        "features": [
+          "Local audio and video playback",
+          "Playlist and queue handling",
+          "Play, pause, seek and volume controls",
+          "Playback state preserved on rotation",
+          "Clean, minimal player UI"
+        ],
+        "challenges": "Managing media lifecycle correctly — release, resume and background behaviour — without leaks or crashes.",
+        "learned": "Media API lifecycle management, state handling across configuration changes, and UI polish for control surfaces.",
+        "screenshots": []
+      }
+    },
+

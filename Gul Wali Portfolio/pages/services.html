@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../" data-title-key="nav.services">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Services — Gul Wali</title>
+  <meta name="description" content="Services by Gul Wali: web development, responsive websites, UI/UX design, web applications, Android apps, maintenance and custom digital solutions.">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="canonical" href="https://example.com/pages/services.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Services — Gul Wali">
+  <meta property="og:description" content="Web development, UI/UX design, Android apps and custom digital solutions.">
+  <meta property="og:url" content="https://example.com/pages/services.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      try {
+        var l = localStorage.getItem('gw_lang'); if (l) l = JSON.parse(l);
+        if (l === 'ps') { document.documentElement.lang = 'ps'; document.documentElement.dir = 'rtl'; }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Gul Wali — home">
+        <span class="brand-mark" aria-hidden="true">GW</span>
+        <span class="brand-text">GUL WALI</span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav-link" href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a class="nav-link" href="../index.html#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a class="nav-link" href="projects.html" data-i18n="nav.projects">Projects</a></li>
+          <li><a class="nav-link" href="services.html" data-i18n="nav.services">Services</a></li>
+          <li><a class="nav-link" href="resume.html" data-i18n="nav.resume">Resume</a></li>
+          <li><a class="nav-link" href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav-link" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <!-- langyage change button
+         <button class="icon-btn" type="button" data-lang-toggle data-i18n-aria-label="nav.switchLang" aria-label="Switch language">
+          <span data-lang-label>پښتو</span>
+        </button>
+      -->
+        <button class="icon-btn" type="button" data-theme-toggle data-i18n-aria-label="nav.switchTheme" aria-label="Switch theme" aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">◐</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-i18n-aria-label="nav.menu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <p class="breadcrumb">
+          <a href="../index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.services">Services</span>
+        </p>
+        <h1 class="page-title" data-i18n="section.services">Services</h1>
+        <p class="page-sub" data-i18n="section.servicesSub">What I can build for you.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid--3" id="services-grid">
+          <p class="state">Loading services…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tight">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <h2 class="section-title" data-i18n="contact.title">Get In Touch</h2>
+          <p class="section-sub" data-i18n="contact.sub">Have a project, a question or an idea? Send a message.</p>
+          <div class="btn-row" style="justify-content:center;margin-top:var(--sp-5)">
+            <a class="btn btn--primary" href="contact.html" data-i18n="hero.contactMe">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-brand__name">GUL WALI</p>
+          <p class="footer-brand__role">Web Designer &amp; Software Developer</p>
+          <p class="footer-brand__text" data-i18n="footer.tagline">Building useful digital experiences.</p>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="resume.html" data-i18n="nav.resume">Resume</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.social">Social Links</h3>
+          <div class="social-row" id="footer-social" style="margin-top:0"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> Gul Wali. <span data-i18n="footer.rights">All Rights Reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>

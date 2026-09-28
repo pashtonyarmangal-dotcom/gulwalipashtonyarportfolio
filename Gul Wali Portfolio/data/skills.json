@@ -1,0 +1,68 @@
+{
+  "categories": [
+    {
+      "id": "frontend",
+      "title": "Frontend",
+      "titlePs": "فرنټ اېنډ",
+      "icon": "</>",
+      "skills": [
+        { "name": "HTML5", "namePs": "HTML5", "level": 85, "label": "Advanced", "labelPs": "پرمختللی" },
+        { "name": "CSS3", "namePs": "CSS3", "level": 82, "label": "Advanced", "labelPs": "پرمختللی" },
+        { "name": "JavaScript", "namePs": "JavaScript", "level": 75, "label": "Intermediate", "labelPs": "منځنی" },
+        { "name": "Responsive Web Design", "namePs": "ریسپانسیو ډیزاین", "level": 80, "label": "Advanced", "labelPs": "پرمختللی" },
+        { "name": "UI/UX", "namePs": "د کاروونکي تجربه", "level": 70, "label": "Intermediate", "labelPs": "منځنی" }
+      ]
+    },
+    {
+      "id": "backend",
+      "title": "Backend",
+      "titlePs": "بیک اېنډ",
+      "icon": "{}",
+      "skills": [
+        { "name": "PHP", "namePs": "PHP", "level": 65, "label": "Intermediate", "labelPs": "منځنی" },
+        { "name": "Node.js", "namePs": "Node.js", "level": 60, "label": "Intermediate", "labelPs": "منځنی" },
+        { "name": "APIs", "namePs": "APIونه", "level": 65, "label": "Intermediate", "labelPs": "منځنی" },
+        { "name": "Database Concepts", "namePs": "د ډیټابیس مفاهیم", "level": 60, "label": "Working Knowledge", "labelPs": "کاري پوهه" }
+      ]
+    },
+    {
+      "id": "tools",
+      "title": "Tools",
+      "titlePs": "وسایل",
+      "icon": ">_",
+      "skills": [
+        { "name": "Git", "namePs": "Git", "level": 70, "label": "Intermediate", "labelPs": "منځنی" },
+        { "name": "GitHub", "namePs": "GitHub", "level": 72, "label": "Intermediate", "labelPs": "منځنی" },
+        { "name": "VS Code", "namePs": "VS Code", "level": 85, "label": "Advanced", "labelPs": "پرمختللی" },
+        { "name": "Android Studio", "namePs": "Android Studio", "level": 55, "label": "Learning", "labelPs": "زده کړه" }
+      ]
+    },
+    {
+  "id": "other",
+  "title": "Other",
+  "titlePs": "نور",
+  "icon": "++",
+  "skills": [
+    { "name": "Firebase", "namePs": "Firebase", "level": 55, "label": "Learning", "labelPs": "زده کړه" },
+    { "name": "Local Storage", "namePs": "لوکل سټوریج", "level": 78, "label": "Advanced", "labelPs": "پرمختللی" },
+    { "name": "Mobile Development", "namePs": "موبایل پراختیا", "level": 65, "label": "Intermediate", "labelPs": "منځنی" },
+    { "name": "AI Tools", "namePs": "د AI وسیلې", "level": 70, "label": "Intermediate", "labelPs": "منځنی" },
+    { "name": "Android Studio", "namePs": "Android Studio", "level": 72, "label": "Intermediate", "labelPs": "منځنی" },
+    { "name": "Networking Fundamentals", "namePs": "د شبکې بنسټونه", "level": 60, "label": "Intermediate", "labelPs": "منځنی" },
+    { "name": "IT Support", "namePs": "IT ملاتړ", "level": 65, "label": "Intermediate", "labelPs": "منځنی" }
+  ]
+},
+    {
+      "id": "other",
+      "title": "Other",
+      "titlePs": "نور",
+      "icon": "++",
+      "skills": [
+        { "name": "Firebase", "namePs": "Firebase", "level": 55, "label": "Learning", "labelPs": "زده کړه" },
+        { "name": "Local Storage", "namePs": "لوکل سټوریج", "level": 78, "label": "Advanced", "labelPs": "پرمختللی" },
+        { "name": "Mobile Development", "namePs": "موبایل پراختیا", "level": 55, "label": "Learning", "labelPs": "زده کړه" },
+        { "name": "AI Tools", "namePs": "د AI وسیلې", "level": 70, "label": "Intermediate", "labelPs": "منځنی" }
+      ]
+    }
+  ]
+}

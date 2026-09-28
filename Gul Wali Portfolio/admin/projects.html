@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects — Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body class="admin-body">
+  <aside class="admin-side" id="admin-sidebar"></aside>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div>
+        <h1 class="admin-title">Projects</h1>
+        <p class="admin-sub">Add, edit, delete and feature projects.</p>
+      </div>
+      <div class="a-btn-row">
+        <button class="a-btn a-btn--primary" type="button" id="add-project">+ Add Project</button>
+        <button class="a-btn a-btn--danger" type="button" id="reset-projects">Reset to defaults</button>
+      </div>
+    </div>
+
+    <div class="admin-warning">
+      <strong>Demo mode.</strong> Changes are stored in LocalStorage only. To make them permanent
+      for all visitors, export the JSON and replace the contents of <code>data/projects.json</code>.
+    </div>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">All projects</h2>
+        <div class="a-btn-row">
+          <input type="search" id="admin-project-search" placeholder="Search projects…"
+                 style="padding:.45rem .7rem;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);font-size:.8125rem">
+        </div>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Title</th><th>Category</th><th>Status</th><th>Featured</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="projects-tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="a-btn-row" style="margin-top:var(--sp-4)">
+        <button class="a-btn" type="button" id="export-projects">Export JSON</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="a-modal" id="admin-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="a-modal__box">
+      <div class="a-modal__head">
+        <h2 class="a-modal__title" id="modal-title" data-modal-title>Edit</h2>
+        <button class="a-modal__close" type="button" data-modal-close aria-label="Close">✕</button>
+      </div>
+      <div data-modal-body></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireSession, renderSidebar, adminStore, createModal, uid, escapeHtml, toast } from './js/admin.js';
+
+    if (!requireSession()) throw new Error('redirecting');
+    await renderSidebar('projects.html');
+
+    const modal = createModal();
+    let projects = await adminStore.getProjects();
+    let query = '';
+
+    const tbody = document.getElementById('projects-tbody');
+
+    const categories = ['Web', 'Mobile', 'JavaScript', 'PHP', 'AI', 'UI/UX'];
+
+    function render() {
+      const q = query.toLowerCase().trim();
+      const list = projects.filter((p) =>
+        !q || `${p.title} ${p.category} ${(p.technologies || []).join(' ')}`.toLowerCase().includes(q)
+      );
+
+      if (!list.length) {
+        tbody.innerHTML = `<tr><td class="empty" colspan="5">No projects found.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = list.map((p) => `
+        <tr>
+          <td>${escapeHtml(p.title)}</td>
+          <td>${escapeHtml(p.category || '')}</td>
+          <td>${escapeHtml(p.status || '')}</td>
+          <td>${p.featured ? '<span style="color:var(--primary)">★ Yes</span>' : '—'}</td>
+          <td class="actions">
+            <div class="a-btn-row">
+              <button class="a-btn a-btn--sm" data-edit="${escapeHtml(p.id)}">Edit</button>
+              <button class="a-btn a-btn--sm" data-toggle="${escapeHtml(p.id)}">${p.featured ? 'Unfeature' : 'Feature'}</button>
+              <button class="a-btn a-btn--sm a-btn--danger" data-del="${escapeHtml(p.id)}">Delete</button>
+            </div>
+          </td>
+        </tr>`).join('');
+    }
+
+    function formHtml(p = {}) {
+      return `
+        <form id="project-form" class="form">
+          <div class="form-row">
+            <div class="field">
+              <label for="pf-title">Title *</label>
+              <input type="text" id="pf-title" name="title" required value="${escapeHtml(p.title || '')}">
+            </div>
+            <div class="field">
+              <label for="pf-titlePs">Title (Pashto)</label>
+              <input type="text" id="pf-titlePs" name="titlePs" value="${escapeHtml(p.titlePs || '')}">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="pf-desc">Description *</label>
+            <textarea id="pf-desc" name="description" required style="min-height:90px">${escapeHtml(p.description || '')}</textarea>
+          </div>
+
+          <div class="field">
+            <label for="pf-descPs">Description (Pashto)</label>
+            <textarea id="pf-descPs" name="descriptionPs" style="min-height:90px">${escapeHtml(p.descriptionPs || '')}</textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="pf-category">Category</label>
+              <select id="pf-category" name="category">
+                ${categories.map((c) => `<option value="${c}" ${p.category === c ? 'selected' : ''}>${c}</option>`).join('')}
+              </select>
+            </div>
+            <div class="field">
+              <label for="pf-status">Status</label>
+              <select id="pf-status" name="status">
+                <option value="completed" ${p.status === 'completed' ? 'selected' : ''}>Completed</option>
+                <option value="in-progress" ${p.status === 'in-progress' ? 'selected' : ''}>In Development</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="pf-tech">Technologies (comma separated)</label>
+            <input type="text" id="pf-tech" name="technologies" value="${escapeHtml((p.technologies || []).join(', '))}">
+          </div>
+
+          <div class="field">
+            <label for="pf-image">Image path</label>
+            <input type="text" id="pf-image" name="image" value="${escapeHtml(p.image || 'assets/images/projects/muhasib.svg')}">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="pf-github">GitHub URL</label>
+              <input type="url" id="pf-github" name="github" value="${escapeHtml(p.github || '')}" placeholder="https://github.com/...">
+            </div>
+            <div class="field">
+              <label for="pf-live">Live Demo URL</label>
+              <input type="url" id="pf-live" name="live" value="${escapeHtml(p.live || '')}" placeholder="https://...">
+            </div>
+          </div>
+
+          <label class="a-switch">
+            <input type="checkbox" id="pf-featured" name="featured" ${p.featured ? 'checked' : ''}>
+            <span>Featured on homepage</span>
+          </label>
+
+          <div class="a-btn-row" style="margin-top:var(--sp-4)">
+            <button class="a-btn a-btn--primary" type="submit">Save</button>
+            <button class="a-btn" type="button" data-modal-close>Cancel</button>
+          </div>
+        </form>`;
+    }
+
+    function openForm(project) {
+      const editing = Boolean(project);
+      modal.open(editing ? 'Edit project' : 'Add project', formHtml(project || {}));
+
+      // Re-bind the cancel button inside the freshly injected form
+      modal.body().querySelectorAll('[data-modal-close]').forEach((b) =>
+        b.addEventListener('click', modal.close)
+      );
+
+      const form = document.getElementById('project-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+
+        const entry = {
+          id: editing ? project.id : uid('proj'),
+          title: String(fd.get('title') || '').trim(),
+          titlePs: String(fd.get('titlePs') || '').trim(),
+          description: String(fd.get('description') || '').trim(),
+          descriptionPs: String(fd.get('descriptionPs') || '').trim(),
+          category: String(fd.get('category') || 'Web'),
+          status: String(fd.get('status') || 'completed'),
+          technologies: String(fd.get('technologies') || '')
+            .split(',').map((s) => s.trim()).filter(Boolean),
+          tags: [String(fd.get('category') || 'Web')],
+          image: String(fd.get('image') || '').trim(),
+          github: String(fd.get('github') || '').trim(),
+          live: String(fd.get('live') || '').trim(),
+          featured: fd.get('featured') === 'on',
+          details: (project && project.details) || {
+            overview: '', problem: '', solution: '', features: [],
+            challenges: '', learned: '', screenshots: []
+          }
+        };
+
+        if (editing) {
+          const i = projects.findIndex((p) => p.id === project.id);
+          projects[i] = entry;
+        } else {
+          projects.unshift(entry);
+        }
+
+        adminStore.saveProjects(projects);
+        modal.close();
+        render();
+        toast(editing ? 'Project updated.' : 'Project added.');
+      });
+    }
+
+    tbody.addEventListener('click', (e) => {
+      const editId = e.target.closest('[data-edit]')?.dataset.edit;
+      const toggleId = e.target.closest('[data-toggle]')?.dataset.toggle;
+      const delId = e.target.closest('[data-del]')?.dataset.del;
+
+      if (editId) {
+        const p = projects.find((x) => x.id === editId);
+        if (p) openForm(p);
+      }
+
+      if (toggleId) {
+        const p = projects.find((x) => x.id === toggleId);
+        if (p) {
+          p.featured = !p.featured;
+          adminStore.saveProjects(projects);
+          render();
+          toast(p.featured ? 'Marked as featured.' : 'Removed from featured.');
+        }
+      }
+
+      if (delId) {
+        if (!confirm('Delete this project? This cannot be undone.')) return;
+        projects = projects.filter((x) => x.id !== delId);
+        adminStore.saveProjects(projects);
+        render();
+        toast('Project deleted.', 'error');
+      }
+    });
+
+    document.getElementById('add-project').addEventListener('click', () => openForm(null));
+
+    document.getElementById('reset-projects').addEventListener('click', async () => {
+      if (!confirm('Reset all projects back to the default data file?')) return;
+      localStorage.removeItem('gw_admin_projects');
+      projects = await adminStore.getProjects();
+      render();
+      toast('Projects reset to defaults.');
+    });
+
+    document.getElementById('admin-project-search').addEventListener('input', (e) => {
+      query = e.target.value;
+      render();
+    });
+
+    document.getElementById('export-projects').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify({ categories, projects }, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'projects.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      toast('projects.json exported.');
+    });
+
+    render();
+  </script>
+</body>
+</html>

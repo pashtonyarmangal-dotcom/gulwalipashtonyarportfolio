@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content — Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body class="admin-body">
+  <aside class="admin-side" id="admin-sidebar"></aside>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div>
+        <h1 class="admin-title">Content</h1>
+        <p class="admin-sub">Skills, services, experience, education and achievements.</p>
+      </div>
+      <div class="a-btn-row">
+        <button class="a-btn a-btn--primary" type="button" id="save-content">Save all</button>
+        <button class="a-btn" type="button" id="export-content">Export JSON</button>
+        <button class="a-btn a-btn--danger" type="button" id="reset-content">Reset</button>
+      </div>
+    </div>
+
+    <div class="admin-warning">
+      <strong>Demo mode.</strong> Content is stored in LocalStorage only. Export the JSON and update
+      the matching files in <code>data/</code> to publish for all visitors.
+    </div>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Skills</h2>
+        <button class="a-btn a-btn--sm" type="button" data-add="skills">+ Add skill</button>
+      </div>
+      <div id="skills-editor"></div>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Services</h2>
+        <button class="a-btn a-btn--sm" type="button" data-add="services">+ Add service</button>
+      </div>
+      <div id="services-editor"></div>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Experience</h2>
+        <button class="a-btn a-btn--sm" type="button" data-add="experience">+ Add entry</button>
+      </div>
+      <div id="experience-editor"></div>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Education</h2>
+        <button class="a-btn a-btn--sm" type="button" data-add="education">+ Add entry</button>
+      </div>
+      <div id="education-editor"></div>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Achievements</h2>
+        <button class="a-btn a-btn--sm" type="button" data-add="achievements">+ Add achievement</button>
+      </div>
+      <div id="achievements-editor"></div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { requireSession, renderSidebar, adminStore, uid, escapeHtml, toast } from './js/admin.js';
+
+    if (!requireSession()) throw new Error('redirecting');
+    await renderSidebar('content.html');
+
+    let content = await adminStore.getContent();
+
+    /* Generic editable row renderer */
+    function row(fields, value, onChange, onDelete) {
+      const wrap = document.createElement('div');
+      wrap.className = 'admin-panel';
+      wrap.style.background = 'var(--surface-2)';
+      wrap.style.marginBottom = 'var(--sp-3)';
+
+      const grid = document.createElement('div');
+      grid.className = 'form-row';
+
+      fields.forEach(({ name, label, type = 'text' }) => {
+        const field = document.createElement('div');
+        field.className = 'field';
+        const id = `f_${name}_${Math.random().toString(36).slice(2, 7)}`;
+        const val = value[name] ?? '';
+
+        field.innerHTML = `
+          <label for="${id}">${escapeHtml(label)}</label>
+          ${type === 'textarea'
+            ? `<textarea id="${id}" data-field="${name}" style="min-height:70px">${escapeHtml(val)}</textarea>`
+            : `<input type="${type}" id="${id}" data-field="${name}" value="${escapeHtml(val)}">`}
+        `;
+        grid.appendChild(field);
+      });
+
+      wrap.appendChild(grid);
+
+      const actions = document.createElement('div');
+      actions.className = 'a-btn-row';
+      actions.style.marginTop = 'var(--sp-3)';
+
+      const del = document.createElement('button');
+      del.type = 'button';
+      del.className = 'a-btn a-btn--sm a-btn--danger';
+      del.textContent = 'Delete';
+      del.addEventListener('click', onDelete);
+      actions.appendChild(del);
+
+      wrap.appendChild(actions);
+
+      wrap.addEventListener('input', (e) => {
+        const key = e.target.dataset.field;
+        if (!key) return;
+        const raw = e.target.value;
+        value[key] = e.target.type === 'number' ? Number(raw) || 0 : raw;
+        onChange();
+      });
+
+      return wrap;
+    }
+
+    function renderSection(containerId, listKey, fields, labelFn) {
+      const container = document.getElementById(containerId);
+      container.textContent = '';
+
+      const list = content[listKey] || [];
+      if (!list.length) {
+        const p = document.createElement('p');
+        p.className = 'state';
+        p.textContent = 'No entries yet.';
+        container.appendChild(p);
+        return;
+      }
+
+      list.forEach((item, index) => {
+        const el = row(
+          fields,
+          item,
+          () => { /* mutated in place; saved on "Save all" */ },
+          () => {
+            if (!confirm(`Delete "${labelFn(item)}"?`)) return;
+            content[listKey].splice(index, 1);
+            adminStore.saveContent(content);
+            renderSection(containerId, listKey, fields, labelFn);
+            toast('Entry deleted.', 'error');
+          }
+        );
+        container.appendChild(el);
+      });
+    }
+
+    function renderAll() {
+      renderSection('skills-editor', 'skills', [
+        { name: 'title', label: 'Category title' },
+        { name: 'titlePs', label: 'Category title (Pashto)' },
+        { name: 'icon', label: 'Icon (short text)' }
+      ], (i) => i.title);
+
+      renderSection('services-editor', 'services', [
+        { name: 'title', label: 'Title' },
+        { name: 'titlePs', label: 'Title (Pashto)' },
+        { name: 'icon', label: 'Icon' },
+        { name: 'description', label: 'Description', type: 'textarea' },
+        { name: 'descriptionPs', label: 'Description (Pashto)', type: 'textarea' }
+      ], (i) => i.title);
+
+      renderSection('experience-editor', 'experience', [
+        { name: 'date', label: 'Date label' },
+        { name: 'title', label: 'Title' },
+        { name: 'titlePs', label: 'Title (Pashto)' },
+        { name: 'org', label: 'Organisation / context' },
+        { name: 'description', label: 'Description', type: 'textarea' }
+      ], (i) => i.title);
+
+      renderSection('education-editor', 'education', [
+        { name: 'date', label: 'Date label' },
+        { name: 'title', label: 'Title' },
+        { name: 'titlePs', label: 'Title (Pashto)' },
+        { name: 'org', label: 'Institution' },
+        { name: 'description', label: 'Description', type: 'textarea' }
+      ], (i) => i.title);
+
+      renderSection('achievements-editor', 'achievements', [
+        { name: 'title', label: 'Title' },
+        { name: 'titlePs', label: 'Title (Pashto)' },
+        { name: 'type', label: 'Type (project / milestone / learning)' },
+        { name: 'icon', label: 'Icon' },
+        { name: 'description', label: 'Description', type: 'textarea' }
+      ], (i) => i.title);
+    }
+
+    /* Add buttons */
+    document.querySelectorAll('[data-add]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.add;
+
+        const blanks = {
+          skills: { id: uid('cat'), title: 'New Category', titlePs: '', icon: '{}', skills: [] },
+          services: { id: uid('svc'), title: 'New Service', titlePs: '', icon: '◆', description: '', descriptionPs: '', features: [], featuresPs: [] },
+          experience: { id: uid('exp'), date: '', datePs: '', title: 'New Entry', titlePs: '', org: '', orgPs: '', description: '', descriptionPs: '' },
+          education: { id: uid('edu'), date: '', datePs: '', title: 'New Entry', titlePs: '', org: '', orgPs: '', description: '', descriptionPs: '' },
+          achievements: { id: uid('ach'), type: 'milestone', icon: '★', title: 'New Achievement', titlePs: '', description: '', descriptionPs: '' }
+        };
+
+        content[key] = content[key] || [];
+        content[key].push(blanks[key]);
+        adminStore.saveContent(content);
+        renderAll();
+        toast('Entry added. Edit the fields and click “Save all”.');
+      });
+    });
+
+    document.getElementById('save-content').addEventListener('click', () => {
+      adminStore.saveContent(content);
+      toast('Content saved to this browser.');
+    });
+
+    document.getElementById('reset-content').addEventListener('click', async () => {
+      if (!confirm('Reset all content back to the default JSON files?')) return;
+      localStorage.removeItem('gw_admin_content');
+      content = await adminStore.getContent();
+      renderAll();
+      toast('Content reset to defaults.');
+    });
+
+    document.getElementById('export-content').addEventListener('click', () => {
+      const files = {
+        'skills.json': { categories: content.skills },
+        'services.json': { services: content.services },
+        'experience.json': { items: content.experience },
+        'education.json': { items: content.education, certificates: [] },
+        'achievements.json': { items: content.achievements }
+      };
+
+      Object.entries(files).forEach(([name, payload]) => {
+        const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = name;
+        a.click();
+        URL.revokeObjectURL(a.href);
+      });
+
+      toast('JSON files exported.');
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>

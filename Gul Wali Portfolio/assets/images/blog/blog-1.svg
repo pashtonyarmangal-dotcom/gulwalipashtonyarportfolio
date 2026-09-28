@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Blog cover: clean CSS architecture">
+  <rect width="800" height="480" fill="#0a0f12"/>
+  <g stroke="#2bff88" stroke-opacity=".12"><path d="M0 120h800M0 240h800M0 360h800"/></g>
+  <text x="400" y="230" font-family="monospace" font-size="52" font-weight="700" fill="#2bff88" text-anchor="middle">{ CSS }</text>
+  <text x="400" y="290" font-family="monospace" font-size="24" fill="#8b98a5" text-anchor="middle">clean architecture</text>
+</svg>

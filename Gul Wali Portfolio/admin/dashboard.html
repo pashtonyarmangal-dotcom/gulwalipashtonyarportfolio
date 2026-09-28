@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard — Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body class="admin-body">
+  <aside class="admin-side" id="admin-sidebar"></aside>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div>
+        <h1 class="admin-title">Dashboard</h1>
+        <p class="admin-sub">Overview of projects, content and messages.</p>
+      </div>
+      <a class="a-btn" href="../index.html">View site →</a>
+    </div>
+
+    <div class="admin-warning">
+      <strong>Demo mode.</strong> This dashboard stores everything in your browser's
+      LocalStorage. It is not secure authentication and not a real backend.
+    </div>
+
+    <div class="admin-stats" id="admin-stats"></div>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Recent messages</h2>
+        <a class="a-btn a-btn--sm" href="messages.html">Open inbox</a>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Date</th><th>Name</th><th>Subject</th><th>Status</th></tr>
+          </thead>
+          <tbody id="recent-messages"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Quick actions</h2>
+      </div>
+      <div class="a-btn-row">
+        <a class="a-btn a-btn--primary" href="projects.html">Manage projects</a>
+        <a class="a-btn" href="blog.html">Manage blog</a>
+        <a class="a-btn" href="content.html">Edit content</a>
+        <a class="a-btn" href="settings.html">Settings</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { requireSession, renderSidebar, adminStore, escapeHtml } from './js/admin.js';
+
+    if (!requireSession()) throw new Error('redirecting');
+    await renderSidebar('dashboard.html');
+
+    const [projects, posts, settings, content] = await Promise.all([
+      adminStore.getProjects(),
+      adminStore.getPosts(),
+      adminStore.getSettings(),
+      adminStore.getContent()
+    ]);
+    const messages = adminStore.getMessages();
+
+    document.getElementById('admin-stats').innerHTML = `
+      <div class="admin-stat"><div class="admin-stat__num">${projects.length}</div><div class="admin-stat__label">Projects</div></div>
+      <div class="admin-stat"><div class="admin-stat__num">${messages.length}</div><div class="admin-stat__label">Messages</div></div>
+      <div class="admin-stat"><div class="admin-stat__num">${posts.length}</div><div class="admin-stat__label">Blog posts</div></div>
+      <div class="admin-stat"><div class="admin-stat__num">${(content.skills || []).reduce((n, c) => n + (c.skills || []).length, 0)}</div><div class="admin-stat__label">Skills</div></div>
+      <div class="admin-stat"><div class="admin-stat__num">${(content.services || []).length}</div><div class="admin-stat__label">Services</div></div>
+    `;
+
+    const tbody = document.getElementById('recent-messages');
+    if (!messages.length) {
+      tbody.innerHTML = `<tr><td class="empty" colspan="4">No messages yet.</td></tr>`;
+    } else {
+      tbody.innerHTML = messages.slice(0, 6).map((m) => `
+        <tr>
+          <td>${escapeHtml(String(m.date || '').slice(0, 10))}</td>
+          <td>${escapeHtml(m.name)}</td>
+          <td>${escapeHtml(m.subject)}</td>
+          <td>${m.read ? 'Read' : '<span style="color:var(--primary)">Unread</span>'}</td>
+        </tr>`).join('');
+    }
+
+    // Show configured name in the sub-heading
+    const sub = document.querySelector('.admin-sub');
+    if (sub && settings && settings.name) {
+      sub.textContent = `Signed in as ${settings.name} · demo mode`;
+    }
+  </script>
+</body>
+</html>

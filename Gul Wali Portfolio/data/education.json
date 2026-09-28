@@ -1,0 +1,38 @@
+{
+  "items": [
+    {
+      "id": "cs-degree",
+      "date": "2024 — Present",
+      "datePs": "۱۴۰۳ — روان",
+      "title": "Bachelor's in Computer Science (3rd Year)",
+      "titlePs": "د کمپیوټر ساینس په برخه کې زده کړې (دریم ټولګی)",
+      "org": "Narkzi Multidisciplinary Institute, Khost",
+      "orgPs": "نرکزي کثیرالرشتوي انسټیټیوټ، خوست",
+      "description": "Currently in my third year of Computer Science. Studying programming fundamentals, data structures, algorithms, databases, software engineering and networking.",
+      "descriptionPs": "اوس مهال د کمپیوټر ساینس په دریم ټولګي کې یم. د پروګرامینګ بنسټونه، ډاټا سټرکچرونه، الګوریتمونه، ډیټابیسونه، سافټویر انجنیري او شبکه زده کوم."
+    },
+    {
+      "id": "it-networking",
+      "date": "Ongoing",
+      "datePs": "روان",
+      "title": "IT & Networking Studies",
+      "titlePs": "IT او شبکې زده کړې",
+      "org": "Independent Study",
+      "orgPs": "خپلواکه زده کړه",
+      "description": "Working and studying in the IT and networking field alongside programming, covering network fundamentals, infrastructure and system administration basics.",
+      "descriptionPs": "د پروګرامینګ ترڅنګ د IT او شبکې په برخه کې کار او زده کړې، د شبکې بنسټونه، زیربنا او د سیسټم اداره."
+    },
+    {
+      "id": "grade-12",
+      "date": "Completed",
+      "datePs": "بشپړ شوی",
+      "title": "Grade 12",
+      "titlePs": "۱۲ ټولګی",
+      "org": "Shamal Piran High School",
+      "orgPs": "شمال پیران عالي لیسه",
+      "description": "Completed secondary education.",
+      "descriptionPs": "منځنۍ زده کړې بشپړې شوې."
+    }
+  ],
+  "certificates": []
+}

@@ -1,0 +1,73 @@
+/* ==========================================================================
+   RTL overrides (Pashto)
+   ========================================================================== */
+
+[dir="rtl"] body {
+  font-family: "Noto Naskh Arabic", "Noto Sans Arabic", "Segoe UI", Tahoma,
+    var(--font-sans);
+}
+
+[dir="rtl"] .eyebrow::before { order: 2; }
+
+[dir="rtl"] .nav-link.is-active::after {
+  left: 0.75rem;
+  right: 0.75rem;
+}
+
+[dir="rtl"] .timeline { padding-inline-start: 0; padding-inline-end: var(--sp-6); }
+
+[dir="rtl"] .timeline::before {
+  inset-inline-start: auto;
+  inset-inline-end: 7px;
+}
+
+[dir="rtl"] .timeline__item::before {
+  inset-inline-start: auto;
+  inset-inline-end: calc(-1 * var(--sp-6) + 1px);
+}
+
+[dir="rtl"] .hero__media::after { inset: -14px; }
+
+[dir="rtl"] .id-card::before {
+  inset-inline-end: auto;
+  inset-inline-start: -40px;
+}
+
+[dir="rtl"] .project-card__badge {
+  inset-inline-start: auto;
+  inset-inline-end: 0.75rem;
+}
+
+[dir="rtl"] .btn,
+[dir="rtl"] .chip,
+[dir="rtl"] .nav-link { letter-spacing: 0; }
+
+[dir="rtl"] .article__content ul { padding-inline-start: 0; padding-inline-end: 1.4rem; }
+
+[dir="rtl"] .terminal,
+[dir="rtl"] .terminal__form input,
+[dir="rtl"] .skill-item__level,
+[dir="rtl"] .stat__num,
+[dir="rtl"] .timeline__date,
+[dir="rtl"] .brand,
+[dir="rtl"] .tag,
+[dir="rtl"] .post-card__meta {
+  font-family: var(--font-mono);
+}
+
+[dir="rtl"] .terminal__body,
+[dir="rtl"] .terminal__line { direction: ltr; text-align: left; }
+
+[dir="rtl"] .cursor-dot,
+[dir="rtl"] .cursor-ring { direction: ltr; }
+
+@media (max-width: 1024px) {
+  [dir="rtl"] .nav { inset: var(--header-h) 0 auto 0; }
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .timeline { padding-inline-end: var(--sp-5); }
+  [dir="rtl"] .timeline__item::before {
+    inset-inline-end: calc(-1 * var(--sp-5) + 1px);
+  }
+}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" role="img" aria-label="Muhasib project cover">
+  <rect width="800" height="480" fill="#0b1013"/>
+  <g stroke="#2bff88" stroke-opacity=".1"><path d="M0 80h800M0 160h800M0 240h800M0 320h800M0 400h800"/><path d="M100 0v480M200 0v480M300 0v480M400 0v480M500 0v480M600 0v480M700 0v480"/></g>
+  <text x="400" y="230" font-family="monospace" font-size="76" font-weight="700" fill="#2bff88" text-anchor="middle">MUHASIB</text>
+  <text x="400" y="285" font-family="monospace" font-size="26" fill="#8b98a5" text-anchor="middle">family finance system</text>
+  <rect x="24" y="24" width="752" height="432" rx="16" fill="none" stroke="#2bff88" stroke-opacity=".35" stroke-width="2"/>
+</svg>

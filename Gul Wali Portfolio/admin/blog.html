@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog — Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body class="admin-body">
+  <aside class="admin-side" id="admin-sidebar"></aside>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div>
+        <h1 class="admin-title">Blog</h1>
+        <p class="admin-sub">Add, edit, publish and delete articles.</p>
+      </div>
+      <div class="a-btn-row">
+        <button class="a-btn a-btn--primary" type="button" id="add-post">+ Add Article</button>
+        <button class="a-btn" type="button" id="export-posts">Export JSON</button>
+      </div>
+    </div>
+
+    <div class="admin-warning">
+      <strong>Demo mode.</strong> Articles are stored in LocalStorage only. Export the JSON
+      and replace <code>data/blog.json</code> to publish for all visitors.
+    </div>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">All articles</h2>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Title</th><th>Category</th><th>Date</th><th>Status</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="posts-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="a-modal" id="admin-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="a-modal__box">
+      <div class="a-modal__head">
+        <h2 class="a-modal__title" id="modal-title" data-modal-title>Edit</h2>
+        <button class="a-modal__close" type="button" data-modal-close aria-label="Close">✕</button>
+      </div>
+      <div data-modal-body></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireSession, renderSidebar, adminStore, createModal, uid, escapeHtml, toast } from './js/admin.js';
+
+    if (!requireSession()) throw new Error('redirecting');
+    await renderSidebar('blog.html');
+
+    const modal = createModal();
+    let posts = await adminStore.getPosts();
+    const categories = ['CSS', 'JavaScript', 'Accessibility', 'UI/UX', 'Web'];
+
+    const tbody = document.getElementById('posts-tbody');
+
+    function render() {
+      if (!posts.length) {
+        tbody.innerHTML = `<tr><td class="empty" colspan="5">No articles yet.</td></tr>`;
+        return;
+      }
+      tbody.innerHTML = posts.map((p) => `
+        <tr>
+          <td>${escapeHtml(p.title)}</td>
+          <td>${escapeHtml(p.category || '')}</td>
+          <td>${escapeHtml(String(p.date || '').slice(0, 10))}</td>
+          <td>${p.published === false
+            ? '<span style="color:var(--warning)">Draft</span>'
+            : '<span style="color:var(--primary)">Published</span>'}</td>
+          <td class="actions">
+            <div class="a-btn-row">
+              <button class="a-btn a-btn--sm" data-edit="${escapeHtml(p.id)}">Edit</button>
+              <button class="a-btn a-btn--sm" data-publish="${escapeHtml(p.id)}">${p.published === false ? 'Publish' : 'Unpublish'}</button>
+              <button class="a-btn a-btn--sm a-btn--danger" data-del="${escapeHtml(p.id)}">Delete</button>
+            </div>
+          </td>
+        </tr>`).join('');
+    }
+
+    function formHtml(p = {}) {
+      return `
+        <form id="post-form" class="form">
+          <div class="field">
+            <label for="bf-title">Title *</label>
+            <input type="text" id="bf-title" name="title" required value="${escapeHtml(p.title || '')}">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="bf-category">Category</label>
+              <select id="bf-category" name="category">
+                ${categories.map((c) => `<option value="${c}" ${p.category === c ? 'selected' : ''}>${c}</option>`).join('')}
+              </select>
+            </div>
+            <div class="field">
+              <label for="bf-date">Date</label>
+              <input type="date" id="bf-date" name="date" value="${escapeHtml(p.date || new Date().toISOString().slice(0, 10))}">
+            </div>
+            <div class="field">
+              <label for="bf-readTime">Read time (minutes)</label>
+              <input type="number" id="bf-readTime" name="readTime" min="1" max="60" value="${Number(p.readTime) || 5}">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="bf-excerpt">Excerpt *</label>
+            <textarea id="bf-excerpt" name="excerpt" required style="min-height:80px">${escapeHtml(p.excerpt || '')}</textarea>
+          </div>
+
+          <div class="field">
+            <label for="bf-image">Cover image path</label>
+            <input type="text" id="bf-image" name="image" value="${escapeHtml(p.image || 'assets/images/blog/blog-1.svg')}">
+          </div>
+
+          <div class="field">
+            <label for="bf-content">Content (safe HTML allowed)</label>
+            <textarea id="bf-content" name="content" style="min-height:220px;font-family:var(--font-mono);font-size:.8125rem">${escapeHtml(p.content || '')}</textarea>
+            <span class="field__error">Allowed tags: h1–h4, p, ul, ol, li, strong, em, code, pre, blockquote, a, br, hr, img, figure, figcaption, span</span>
+          </div>
+
+          <label class="a-switch">
+            <input type="checkbox" id="bf-published" name="published" ${p.published === false ? '' : 'checked'}>
+            <span>Published</span>
+          </label>
+
+          <div class="a-btn-row" style="margin-top:var(--sp-4)">
+            <button class="a-btn a-btn--primary" type="submit">Save</button>
+            <button class="a-btn" type="button" data-modal-close>Cancel</button>
+          </div>
+        </form>`;
+    }
+
+    function openForm(post) {
+      const editing = Boolean(post);
+      modal.open(editing ? 'Edit article' : 'Add article', formHtml(post || {}));
+
+      modal.body().querySelectorAll('[data-modal-close]').forEach((b) =>
+        b.addEventListener('click', modal.close)
+      );
+
+      const form = document.getElementById('post-form');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+
+        const entry = {
+          id: editing ? post.id : uid('post'),
+          title: String(fd.get('title') || '').trim(),
+          category: String(fd.get('category') || 'CSS'),
+          date: String(fd.get('date') || ''),
+          readTime: Number(fd.get('readTime')) || 5,
+          excerpt: String(fd.get('excerpt') || '').trim(),
+          image: String(fd.get('image') || '').trim(),
+          content: String(fd.get('content') || ''),
+          published: fd.get('published') === 'on'
+        };
+
+        if (editing) {
+          const i = posts.findIndex((p) => p.id === post.id);
+          posts[i] = entry;
+        } else {
+          posts.unshift(entry);
+        }
+
+        adminStore.savePosts(posts);
+        modal.close();
+        render();
+        toast(editing ? 'Article updated.' : 'Article added.');
+      });
+    }
+
+    tbody.addEventListener('click', (e) => {
+      const editId = e.target.closest('[data-edit]')?.dataset.edit;
+      const pubId = e.target.closest('[data-publish]')?.dataset.publish;
+      const delId = e.target.closest('[data-del]')?.dataset.del;
+
+      if (editId) {
+        const p = posts.find((x) => x.id === editId);
+        if (p) openForm(p);
+      }
+
+      if (pubId) {
+        const p = posts.find((x) => x.id === pubId);
+        if (p) {
+          p.published = p.published === false;
+          adminStore.savePosts(posts);
+          render();
+          toast(p.published ? 'Article published.' : 'Article moved to draft.');
+        }
+      }
+
+      if (delId) {
+        if (!confirm('Delete this article?')) return;
+        posts = posts.filter((x) => x.id !== delId);
+        adminStore.savePosts(posts);
+        render();
+        toast('Article deleted.', 'error');
+      }
+    });
+
+    document.getElementById('add-post').addEventListener('click', () => openForm(null));
+
+    document.getElementById('export-posts').addEventListener('click', () => {
+      const blob = new Blob([JSON.stringify({ categories, posts }, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'blog.json';
+      a.click();
+      URL.revokeObjectURL(a.href);
+      toast('blog.json exported.');
+    });
+
+    render();
+  </script>
+</body>
+</html>

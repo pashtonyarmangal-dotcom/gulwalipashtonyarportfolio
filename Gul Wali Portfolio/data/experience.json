@@ -1,0 +1,49 @@
+{
+  "note": "Honest, truthful experience. No employers, clients or job titles have been invented.",
+  "items": [
+    {
+      "id": "android-development",
+      "date": "Ongoing",
+      "datePs": "روان",
+      "title": "Android Application Development",
+      "titlePs": "د اندروید اپلیکیشن پراختیا",
+      "org": "Independent — Personal Projects",
+      "orgPs": "خپلواک — شخصي پروژې",
+      "description": "Designed and built Android applications including Khoze Aw Pa Zra Pore Kise, Khandawar Baitona, Ibratnake Kise and G Player, covering content handling, RTL Pashto typography and offline reading experiences.",
+      "descriptionPs": "د اندروید اپلیکیشنونه جوړ شوي — خوږې او په زړه پورې کیسې، خوندور بیتونه، عبرتناکې کیسې او G Player، د محتوا اداره، د پښتو RTL ټایپوګرافي او افلاین لوستلو تجربې سره."
+    },
+    {
+      "id": "web-development",
+      "date": "Ongoing",
+      "datePs": "روان",
+      "title": "Web Development",
+      "titlePs": "وېب پراختیا",
+      "org": "Independent — Personal Projects",
+      "orgPs": "خپلواک — شخصي پروژې",
+      "description": "Building full web projects end to end: Muhasib (family finance system), Afghan AI Prompt (AI prompt manager), and Adabi Dewa (literary content platform).",
+      "descriptionPs": "بشپړې وېب پروژې جوړې شوې: محاسب (د کورنۍ مالي سیستم)، Afghan AI Prompt (د AI پرامپټ اداره)، او ادبي ډیوه (ادبي محتوا)."
+    },
+    {
+      "id": "it-networking-exp",
+      "date": "Ongoing",
+      "datePs": "روان",
+      "title": "IT & Networking",
+      "titlePs": "IT او شبکه",
+      "org": "Ongoing Study and Practice",
+      "orgPs": "روانه زده کړه او تمرین",
+      "description": "Working and studying in the IT and networking field alongside programming: network fundamentals, system administration and infrastructure basics.",
+      "descriptionPs": "د پروګرامینګ ترڅنګ د IT او شبکې په برخه کې کار او زده کړې: د شبکې بنسټونه، د سیسټم اداره او زیربنا."
+    },
+    {
+      "id": "cs-student",
+      "date": "2024 — Present",
+      "datePs": "۱۴۰۳ — روان",
+      "title": "Computer Science Student",
+      "titlePs": "د کمپیوټر ساینس محصل",
+      "org": "Narkzi Multidisciplinary Institute, Khost",
+      "orgPs": "نرکزي کثیرالرشتوي انسټیټیوټ، خوست",
+      "description": "Third-year Computer Science student. Studying programming, algorithms, databases, software engineering and networks.",
+      "descriptionPs": "د کمپیوټر ساینس د دریم ټولګي محصل. د پروګرامینګ، الګوریتمونو، ډیټابیسونو، سافټویر انجنیري او شبکې زده کړه."
+    }
+  ]
+}

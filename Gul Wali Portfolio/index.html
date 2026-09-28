@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="./" data-title-key="meta.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gul Wali — Web Designer &amp; Software Developer</title>
+  <meta name="description" content="Gul Wali is a web designer, web developer and software developer building modern, responsive, user-focused websites, web applications and Android apps.">
+  <meta name="author" content="Gul Wali">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="canonical" href="https://example.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gul Wali — Web Designer &amp; Software Developer">
+  <meta property="og:description" content="I build digital experiences that solve real problems. Modern, responsive, accessible websites and applications.">
+  <meta property="og:url" content="https://example.com/">
+  <meta property="og:image" content="https://example.com/favicon.svg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ps_AF">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gul Wali — Web Designer &amp; Software Developer">
+  <meta name="twitter:description" content="I build digital experiences that solve real problems.">
+  <meta name="twitter:image" content="https://example.com/favicon.svg">
+
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/rtl.css">
+
+  <!-- Prevent theme flash: apply stored theme before first paint -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme');
+        if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') {
+          t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        }
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+      try {
+  document.documentElement.lang = 'en';
+  document.documentElement.dir = 'ltr';
+  localStorage.removeItem('gw_lang');
+} catch (e) {}
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gul Wali",
+    "jobTitle": "Web Designer, Web Developer, Software Developer",
+    "description": "Web designer and software developer building modern, responsive websites and mobile applications.",
+    "url": "https://example.com/",
+    "knowsLanguage": ["en", "ps"],
+    "knowsAbout": ["Web Development", "Web Design", "UI/UX Design", "JavaScript", "PHP", "Node.js", "Android Development"]
+  }
+  </script>
+</head>
+
+<body class="is-loading">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===================================================== PRELOADER -->
+  <div class="preloader" id="preloader" role="status" aria-live="polite" aria-label="Loading portfolio">
+    <div class="preloader__box">
+      <div class="preloader__log" data-preloader-log></div>
+      <div class="preloader__bar">
+        <div class="preloader__fill" data-preloader-fill></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================== HEADER -->
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#hero" aria-label="Gul Wali — home">
+        <span class="brand-mark" aria-hidden="true">GW</span>
+        <span class="brand-text">GUL WALI</span>
+      </a>
+
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#hero" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav-link" href="#about" data-i18n="nav.about">About</a></li>
+          <li><a class="nav-link" href="#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a class="nav-link" href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a class="nav-link" href="#services" data-i18n="nav.services">Services</a></li>
+          <li><a class="nav-link" href="pages/resume.html" data-i18n="nav.resume">Resume</a></li>
+          <li><a class="nav-link" href="pages/blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav-link" href="#contact" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+      <!-- language Button Change
+        <button class="icon-btn" type="button" data-lang-toggle
+                data-i18n-aria-label="nav.switchLang" aria-label="Switch language">
+          <span data-lang-label>پښتو</span>
+        </button>
+        -->
+        <button class="icon-btn" type="button" data-theme-toggle
+                data-i18n-aria-label="nav.switchTheme" aria-label="Switch theme" aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">◐</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button"
+                aria-expanded="false" aria-controls="primary-nav"
+                data-i18n-aria-label="nav.menu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ======================================================= HERO -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner">
+        <div>
+          <p class="status-pill" id="availability" data-available="true">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-availability-text data-i18n="hero.available">Available for Projects</span>
+          </p>
+
+          <h1 class="hero__name" id="hero-name"><span>GUL</span> WALI</h1>
+
+          <div class="hero__roles" id="hero-roles">
+            <span class="role-chip">Web Designer</span>
+            <span class="role-chip">Web Developer</span>
+            <span class="role-chip">Software Developer</span>
+          </div>
+
+          <h2 class="hero__headline" id="hero-headline">
+            I Build Digital Experiences That Solve Real Problems.
+          </h2>
+
+          <p class="hero__desc" id="hero-desc">
+            I design and build modern, responsive and user-focused digital experiences,
+            websites and applications.
+          </p>
+
+          <div class="btn-row">
+            <a class="btn btn--primary" href="#projects" data-i18n="hero.viewWork">View My Work</a>
+            <a class="btn btn--ghost" href="pages/resume.html" data-resume-link
+               data-i18n="hero.downloadResume">Download Resume</a>
+            <a class="btn btn--ghost" href="#contact" data-i18n="hero.contactMe">Contact Me</a>
+          </div>
+
+          <div class="social-row" id="hero-social" aria-label="Social links"></div>
+        </div>
+
+        <div class="hero__media floaty">
+          <img id="hero-image" src="assets/images/profile/profile.svg"
+               alt="Gul Wali profile picture" width="480" height="480" decoding="async">
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================== TERMINAL -->
+    <section class="section section--tight" aria-labelledby="terminal-heading">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">CLI</span>
+          <h2 class="section-title" id="terminal-heading">Interactive Terminal</h2>
+          <p class="section-sub">Type <code>help</code> to explore. This terminal is a presentation tool — it cannot access your system.</p>
+        </div>
+
+        <div class="terminal terminal--live" id="terminal">
+          <div class="terminal__bar">
+            <span class="terminal__dot terminal__dot--r"></span>
+            <span class="terminal__dot terminal__dot--y"></span>
+            <span class="terminal__dot terminal__dot--g"></span>
+            <span class="terminal__title" data-terminal-title>gulwali@portfolio</span>
+          </div>
+
+          <div class="terminal__body" data-terminal-body aria-live="polite" aria-label="Terminal output"></div>
+
+          <form class="terminal__form" data-terminal-form autocomplete="off">
+            <label class="visually-hidden" for="terminal-input">Terminal command input</label>
+            <span class="terminal__prompt" aria-hidden="true">gulwali@portfolio:~$</span>
+            <input type="text" id="terminal-input" data-terminal-input
+                   spellcheck="false" autocapitalize="off" autocorrect="off"
+                   aria-label="Terminal command input">
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================== ABOUT -->
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="grid grid--2" style="align-items:start">
+          <div>
+            <div class="section-head">
+              <span class="eyebrow">01</span>
+              <h2 class="section-title" id="about-heading" data-i18n="section.about">About Me</h2>
+              <p class="section-sub" data-i18n="section.aboutSub">Who I am and what I build.</p>
+            </div>
+
+            <p class="card__text" id="about-preview-text" style="font-size:1rem">
+              Loading profile…
+            </p>
+
+            <h3 style="margin-top:var(--sp-6);font-size:1rem" data-i18n="about.philosophy">Philosophy</h3>
+            <p class="card__text" id="about-philosophy" style="margin-top:var(--sp-2)"></p>
+
+            <div class="btn-row" style="margin-top:var(--sp-6)">
+              <a class="btn btn--ghost" href="pages/about.html" data-i18n="btn.readMore">Read More</a>
+            </div>
+          </div>
+
+          <aside class="id-card" aria-labelledby="identity-title">
+            <h3 class="visually-hidden" id="identity-title" data-i18n="about.identity">Developer Identity</h3>
+            <p class="id-card__name">GUL WALI</p>
+            <p class="id-card__role">Web / Software Developer /Andriod Developer</p>
+            <p class="id-card__line">Building useful digital products.</p>
+
+            <h4 style="margin-top:var(--sp-5);font-size:0.8125rem;text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted)"
+                data-i18n="about.currentFocus">Current Focus</h4>
+            <ul id="about-focus" class="tag-row" style="margin-top:var(--sp-3);display:flex;flex-wrap:wrap;gap:.35rem"></ul>
+
+            <dl class="id-card__meta" id="identity-meta"></dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== SKILLS -->
+    <section class="section" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">02</span>
+          <h2 class="section-title" id="skills-heading" data-i18n="section.skills">Skills</h2>
+          <p class="section-sub" data-i18n="section.skillsSub">
+            Technologies and tools I work with. Levels are self-assessed indicators, not measured scores.
+          </p>
+        </div>
+
+        <div class="grid grid--2" id="skills-grid">
+          <p class="state">Loading skills…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================== PROJECTS -->
+    <section class="section" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">03</span>
+          <h2 class="section-title" id="projects-heading" data-i18n="section.projects">Featured Projects</h2>
+          <p class="section-sub" data-i18n="section.projectsSub">A selection of the things I have designed and built.</p>
+        </div>
+
+        <div class="grid grid--3" id="featured-projects">
+          <p class="state">Loading projects…</p>
+        </div>
+
+        <div class="btn-row" style="margin-top:var(--sp-6)">
+          <a class="btn btn--primary" href="pages/projects.html" data-i18n="btn.viewAll">View All</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================== SERVICES -->
+    <section class="section" id="services" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">04</span>
+          <h2 class="section-title" id="services-heading" data-i18n="section.services">Services</h2>
+          <p class="section-sub" data-i18n="section.servicesSub">What I can build for you.</p>
+        </div>
+
+        <div class="grid grid--3" id="services-grid">
+          <p class="state">Loading services…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================== STATS -->
+    <section class="section section--tight" aria-labelledby="stats-heading">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">05</span>
+          <h2 class="section-title" id="stats-heading" data-i18n="section.stats">By the Numbers</h2>
+          <p class="section-sub">All values are real and editable in <code>data/profile.json</code>.</p>
+        </div>
+
+        <div class="grid grid--4" id="stats-grid">
+          <p class="state">Loading statistics…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================== EXPERIENCE -->
+    <section class="section" id="experience" aria-labelledby="experience-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">06</span>
+          <h2 class="section-title" id="experience-heading" data-i18n="section.experience">Experience</h2>
+          <p class="section-sub" data-i18n="section.experienceSub">Honest, truthful development experience.</p>
+        </div>
+
+        <div class="timeline" id="experience-timeline">
+          <p class="state">Loading experience…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =================================================== EDUCATION -->
+    <section class="section" id="education" aria-labelledby="education-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">07</span>
+          <h2 class="section-title" id="education-heading" data-i18n="section.education">Education</h2>
+        </div>
+
+        <div class="timeline" id="education-timeline">
+          <p class="state">Loading education…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================ ACHIEVEMENTS -->
+    <section class="section" id="achievements" aria-labelledby="achievements-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">08</span>
+          <h2 class="section-title" id="achievements-heading" data-i18n="section.achievements">Achievements</h2>
+          <p class="section-sub" data-i18n="section.achievementsSub">Real milestones only — nothing invented.</p>
+        </div>
+
+        <div class="grid grid--3" id="achievements-grid">
+          <p class="state">Loading achievements…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= BLOG -->
+    <section class="section" id="blog" aria-labelledby="blog-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">09</span>
+          <h2 class="section-title" id="blog-heading" data-i18n="section.blog">Latest Writing</h2>
+          <p class="section-sub" data-i18n="section.blogSub">
+            Notes on frontend development, accessibility and interface design.
+          </p>
+        </div>
+
+        <div class="grid grid--3" id="blog-preview">
+          <p class="state">Loading articles…</p>
+        </div>
+
+        <div class="btn-row" style="margin-top:var(--sp-6)">
+          <a class="btn btn--ghost" href="pages/blog.html" data-i18n="btn.viewAll">View All</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================================================== CONTACT -->
+    <section class="section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-head section-head--center">
+          <span class="eyebrow">10</span>
+          <h2 class="section-title" id="contact-heading" data-i18n="contact.title">Get In Touch</h2>
+          <p class="section-sub" data-i18n="contact.sub">Have a project, a question or an idea? Send a message.</p>
+        </div>
+
+        <div class="btn-row" style="justify-content:center">
+          <a class="btn btn--primary" href="pages/contact.html" data-i18n="hero.contactMe">Contact Me</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================== FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-brand__name">GUL WALI</p>
+          <p class="footer-brand__role">Web Designer &amp; Software Developer</p>
+          <p class="footer-brand__text" data-i18n="footer.tagline">Building useful digital experiences.</p>
+        </div>
+
+        <div>
+          <h3 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+            <li><a href="#about" data-i18n="nav.about">About</a></li>
+            <li><a href="pages/projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="pages/services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="pages/resume.html" data-i18n="nav.resume">Resume</a></li>
+            <li><a href="pages/achievements.html" data-i18n="nav.achievements">Achievements</a></li>
+            <li><a href="pages/contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title" data-i18n="footer.social">Social Links</h3>
+          <div class="social-row" id="footer-social" style="margin-top:0"></div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> Gul Wali. <span data-i18n="footer.rights">All Rights Reserved.</span></p>
+        <p data-i18n="footer.builtWith">Built with HTML, CSS and JavaScript.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+
+</html>
+
+
+
+
+

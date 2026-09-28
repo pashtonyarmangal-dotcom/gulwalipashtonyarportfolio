@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messages — Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+    })();
+  </script>
+</head>
+<body class="admin-body">
+  <aside class="admin-side" id="admin-sidebar"></aside>
+
+  <main class="admin-main">
+    <div class="admin-head">
+      <div>
+        <h1 class="admin-title">Messages</h1>
+        <p class="admin-sub">Contact form submissions stored in this browser.</p>
+      </div>
+      <div class="a-btn-row">
+        <button class="a-btn" type="button" id="mark-all-read">Mark all as read</button>
+        <button class="a-btn a-btn--danger" type="button" id="clear-messages">Clear all</button>
+      </div>
+    </div>
+
+    <div class="admin-warning">
+      <strong>Important.</strong> Messages saved here only exist in <em>this browser</em>.
+      If no <code>contactEndpoint</code> is configured, the website never sends email —
+      you will only see messages submitted from this device.
+    </div>
+
+    <section class="admin-panel">
+      <div class="admin-panel__head">
+        <h2 class="admin-panel__title">Inbox</h2>
+        <span class="admin-sub" id="msg-count"></span>
+      </div>
+
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead>
+            <tr><th>Date</th><th>Name</th><th>Email</th><th>Subject</th><th>Delivery</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="messages-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div class="a-modal" id="admin-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="a-modal__box">
+      <div class="a-modal__head">
+        <h2 class="a-modal__title" id="modal-title" data-modal-title>Message</h2>
+        <button class="a-modal__close" type="button" data-modal-close aria-label="Close">✕</button>
+      </div>
+      <div data-modal-body></div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { requireSession, renderSidebar, adminStore, createModal, escapeHtml, toast } from './js/admin.js';
+
+    if (!requireSession()) throw new Error('redirecting');
+    await renderSidebar('messages.html');
+
+    const modal = createModal();
+    let messages = adminStore.getMessages();
+
+    const tbody = document.getElementById('messages-tbody');
+    const countEl = document.getElementById('msg-count');
+
+    function persist() {
+      // Keep the "read" flag in sync with the public messages store as well.
+      adminStore.saveMessages(messages);
+    }
+
+    function render() {
+      countEl.textContent = `${messages.length} message(s) · ${messages.filter((m) => !m.read).length} unread`;
+
+      if (!messages.length) {
+        tbody.innerHTML = `<tr><td class="empty" colspan="6">No messages yet.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = messages.map((m) => `
+        <tr class="msg-row ${m.read ? '' : 'is-unread'}" data-id="${escapeHtml(m.id)}">
+          <td>${escapeHtml(String(m.date || '').slice(0, 16).replace('T', ' '))}</td>
+          <td>${escapeHtml(m.name)}</td>
+          <td><a href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a></td>
+          <td>${escapeHtml(m.subject)}</td>
+          <td>${m.backendUsed
+            ? '<span style="color:var(--primary)">Sent via backend</span>'
+            : '<span style="color:var(--warning)">Local only</span>'}</td>
+          <td class="actions">
+            <div class="a-btn-row">
+              <button class="a-btn a-btn--sm" data-open="${escapeHtml(m.id)}">Open</button>
+              <button class="a-btn a-btn--sm a-btn--danger" data-del="${escapeHtml(m.id)}">Delete</button>
+            </div>
+          </td>
+        </tr>`).join('');
+    }
+
+    tbody.addEventListener('click', (e) => {
+      const openId = e.target.closest('[data-open]')?.dataset.open
+        || (e.target.closest('.msg-row') && !e.target.closest('[data-del]') ? e.target.closest('.msg-row').dataset.id : null);
+      const delId = e.target.closest('[data-del]')?.dataset.del;
+
+      if (delId) {
+        e.stopPropagation();
+        if (!confirm('Delete this message?')) return;
+        messages = messages.filter((m) => m.id !== delId);
+        persist();
+        render();
+        toast('Message deleted.', 'error');
+        return;
+      }
+
+      if (openId) {
+        const m = messages.find((x) => x.id === openId);
+        if (!m) return;
+
+        m.read = true;
+        persist();
+        render();
+
+        modal.open(m.subject || 'Message', `
+          <div class="form">
+            <dl class="id-card__meta" style="margin:0">
+              <div><dt>From</dt><dd>${escapeHtml(m.name)}</dd></div>
+              <div><dt>Email</dt><dd><a href="mailto:${escapeHtml(m.email)}">${escapeHtml(m.email)}</a></dd></div>
+              <div><dt>Date</dt><dd>${escapeHtml(String(m.date || '').slice(0, 16).replace('T', ' '))}</dd></div>
+              <div><dt>Delivery</dt><dd>${m.backendUsed ? 'Sent via backend' : 'Stored locally only'}</dd></div>
+            </dl>
+            <p class="msg-body" style="margin-top:var(--sp-5)">${escapeHtml(m.message)}</p>
+            <div class="a-btn-row" style="margin-top:var(--sp-5)">
+              <a class="a-btn a-btn--primary" href="mailto:${escapeHtml(m.email)}?subject=${encodeURIComponent('Re: ' + (m.subject || ''))}">Reply by email</a>
+              <button class="a-btn" type="button" data-modal-close>Close</button>
+            </div>
+          </div>
+        `);
+
+        modal.body().querySelectorAll('[data-modal-close]').forEach((b) =>
+          b.addEventListener('click', modal.close)
+        );
+      }
+    });
+
+    document.getElementById('mark-all-read').addEventListener('click', () => {
+      messages.forEach((m) => { m.read = true; });
+      persist();
+      render();
+      toast('All messages marked as read.');
+    });
+
+    document.getElementById('clear-messages').addEventListener('click', () => {
+      if (!confirm('Delete ALL messages? This cannot be undone.')) return;
+      messages = [];
+      persist();
+      localStorage.removeItem('gw_messages');
+      render();
+      toast('All messages cleared.', 'error');
+    });
+
+    render();
+  </script>
+</body>
+</html>

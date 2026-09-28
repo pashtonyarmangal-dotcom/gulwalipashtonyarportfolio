@@ -1,0 +1,174 @@
+{
+  "categories": ["All", "Web", "Mobile", "JavaScript", "PHP", "AI", "UI/UX"],
+  "projects": [
+    {
+      "id": "muhasib",
+      "title": "Muhasib",
+      "titlePs": "محاسب",
+      "category": "Web",
+      "tags": ["JavaScript", "PHP", "Web"],
+      "technologies": ["HTML", "CSS", "JavaScript", "PHP", "LocalStorage"],
+      "description": "A family financial management system for tracking income, expenses and monthly budgets in one simple dashboard.",
+      "descriptionPs": "د کورنۍ مالي مدیریت سیستم چې عاید، لګښتونه او میاشتنۍ بودیجه په یو ساده ډشبورډ کې تعقیبوي.",
+      "status": "completed",
+      "featured": true,
+      "image": "assets/images/project/muhasib-cover.webp",
+      "github": "https://github.com/pashtonyarmangal-dotcom",
+      "getting":"you can get these application by below telegrame link",
+      "live": "https://t.me/hararkhezalekana",
+      "details": {
+        "overview": "Muhasib is a personal and family finance tracking system. It gives a household a single place to record income and expenses, categorise spending and see where the money actually goes each month.",
+        "problem": "Families often track money in notebooks or scattered spreadsheets. There is no clear monthly picture, and small expenses are forgotten.",
+        "solution": "A lightweight web application with quick entry forms, category breakdowns and a monthly summary view that works well on a phone.",
+        "features": [
+          "Add and edit income and expense entries",
+          "Category-based spending breakdown",
+          "Monthly and total balance summary",
+          "Persian/Pashto friendly number and date display",
+          "Offline-capable data storage"
+        ],
+        "challenges": "Keeping the interface simple enough for daily use while still giving a useful financial overview. Handling number formatting correctly for RTL users was also a real design problem.",
+        "learned": "How to structure a small data-driven application, how to design forms people actually finish, and how to keep financial data readable at a glance.",
+        "screenshots": [
+          "assets/images/project/muhasib/screen-1.webp",
+  "assets/images/project/muhasib/screen-2.webp",
+  "assets/images/project/muhasib/screen-3.webp",
+  "assets/images/project/muhasib/screen-4.webp",
+  "assets/images/project/muhasib/screen-5.webp"
+        ]
+      }
+    },
+    
+    {
+      "id": "khoze-kise",
+      "title": "خوږې او په زړه پورې کیسې",
+      "titlePs": "خوږې او په زړه پورې کیسې",
+      "category": "Mobile",
+      "tags": ["Mobile", "UI/UX"],
+      "technologies": ["Android", "Java", "XML Layouts"],
+      "description": "A Pashto stories application for reading short, sweet and engaging stories on mobile.",
+      "descriptionPs": "د پښتو کیسو اپلیکیشن چې لنډې او په زړه پورې کیسې لوستل کېږي.",
+      "status": "completed",
+      "featured": true,
+      "image": "assets/images/project/khoze-kise.webp",
+      "github": "https://github.com/pashtonyarmangal-dotcom",
+      "live": "https://t.me/hararkhezalekana",
+      "details": {
+        "overview": "A mobile reading application that presents a curated collection of short Pashto stories in a clean, comfortable reading layout.",
+        "problem": "Pashto reading content is scattered across social media posts and low-quality websites with poor typography and lots of ads.",
+        "solution": "A distraction-free mobile reader with proper Pashto typography, adjustable text size and fast navigation between stories.",
+        "features": [
+          "Story list and detail views",
+          "Adjustable font size",
+          "RTL-optimised Pashto typography",
+          "Fast local content loading",
+          "Simple, distraction-free reading screen"
+        ],
+        "challenges": "Pashto text rendering and line height needed careful tuning. Standard Android defaults produced cramped, hard-to-read paragraphs.",
+        "learned": "Practical RTL typography on Android, layout work with long text content, and designing for comfortable reading.",
+        "screenshots": [
+          "assets/images/project/khoze-kise/khoze-kise.webp",
+          "assets/images/project/khoze-kise/khoze-kise1.jpg",
+          "assets/images/project/khoze-kise/khoze-kise.jpg"
+        ]
+      }
+    },
+    {
+      "id": "khandawar-baitona",
+      "title": "خوندور بیتونه",
+      "titlePs": "خوندور بیتونه",
+      "category": "Mobile",
+      "tags": ["Mobile", "UI/UX"],
+      "technologies": ["Android", "Java", "XML Layouts"],
+      "description": "A Pashto poetry application for browsing and reading selected verses.",
+      "descriptionPs": "د پښتو شعرونو اپلیکیشن د غوره بیتونو لوستلو لپاره.",
+      "status": "completed",
+      "featured": false,
+      "image": "assets/images/project/khandawar-baitona.webp",
+      "github": "https://github.com/pashtonyarmangal-dotcom",
+      "live": "https://t.me/hararkhezalekana",
+      "details": {
+        "overview": "A poetry reading app that presents Pashto verses in a clean layout with poet attribution and simple browsing.",
+        "problem": "Poetry lovers have to scroll through cluttered feeds to find verses, and there is no clean way to read or revisit favourites.",
+        "solution": "A simple, focused reading experience with a clear typographic hierarchy for verse, poet and title.",
+        "features": [
+          "Browse verses by collection",
+          "Poet attribution on each verse",
+          "Favourites saved on device",
+          "Readable RTL typography",
+          "Share a verse as text"
+        ],
+        "challenges": "Balancing poetic line structure with small screen widths without breaking the meaning of a verse.",
+        "learned": "Working with structured content, text-heavy UI layout and RTL typography detail.",
+        "screenshots": [
+          "assets/images/project/khandawar-baitona/khandawar-baitona.jpg",
+          "assets/images/project/khandawar-baitona/khandawar-baitona1.jpg"
+        ]
+      }
+    },
+    
+    {
+      "id": "adabe-dewa",
+      "title": "ادبي ډیوه",
+      "titlePs": "ادبي ډیوه",
+      "category": "Web",
+      "tags": ["Web", "UI/UX"],
+      "technologies": ["HTML", "CSS", "JavaScript"],
+      "description": "A literary content project for presenting Pashto literary writing in a clean, readable web layout.",
+      "descriptionPs": "ادبي محتوا پروژه چې پښتو ادبي لیکنې په پاک او لوستلو وړ وېب بڼه ښیي.",
+      "status": "in-progress",
+      "featured": false,
+      "image": "assets/images/project/adabi-dewa.webp",
+      "github": "https://github.com/pashtonyarmangal-dotcom",
+      "live": "https://t.me/hararkhezalekana",
+      "details": {
+        "overview": "Adabi Dewa is a content-focused project for publishing and reading Pashto literary material on the web.",
+        "problem": "Literary Pashto content online is usually published in designs that are hard to read and impossible to browse.",
+        "solution": "A typography-first reading layout with clear hierarchy, comfortable line length and full RTL support.",
+        "features": [
+          "Typography-first article layout",
+          "Full RTL support",
+          "Category-based browsing",
+          "Responsive reading experience",
+          "Print-friendly styling"
+        ],
+        "challenges": "Getting Pashto line height, letter spacing and heading hierarchy to feel natural rather than mechanical.",
+        "learned": "Deep practical work with CSS typography, writing modes and RTL layout.",
+        "screenshots": []
+      }
+    },
+    {
+      "id": "ibratnak-kise",
+      "title": "عبرتناکې او اسلامي کیسې",
+      "titlePs": "عبرتناکې او اسلامي کیسې",
+      "category": "Mobile",
+      "tags": ["Mobile", "UI/UX"],
+      "technologies": ["Android", "Java", "XML Layouts"],
+      "description": "An application presenting Islamic and moral stories with lessons, built for comfortable mobile reading.",
+      "descriptionPs": "اسلامي او عبرتناکې کیسې د درسونو سره، د موبایل په آرامه لوستلو لپاره.",
+      "status": "completed",
+      "featured": false,
+      "image": "assets/images/project/ibratnak-kise.webp",
+      "github": "https://github.com/pashtonyarmangal-dotcom",
+      "live": "https://t.me/hararkhezalekana",
+      "details": {
+        "overview": "A mobile application that presents Islamic and moral stories together with the lesson each story carries.",
+        "problem": "Readers want short, authentic moral content in a clean format without ads, popups or broken text.",
+        "solution": "A simple reader with a story list, a detail screen, and a clearly separated lesson section under each story.",
+        "features": [
+          "Story list with categories",
+          "Story detail with a dedicated lesson section",
+          "Adjustable text size",
+          "Bookmark favourites",
+          "Full offline content"
+        ],
+        "challenges": "Structuring content so the story and the lesson stay clearly separated without making the screen feel crowded.",
+        "learned": "Content modelling for structured text, mobile reading layout, and building a clean offline experience.",
+        "screenshots": [
+          "assets/images/project/ebratnakakessa/1111.webp",
+          "assets/images/project/ebratnakakessa/2222.webp"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../" data-title-key="nav.contact">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Gul Wali</title>
+  <meta name="description" content="Contact Gul Wali for web development, UI/UX design, web applications, Android apps and custom digital solutions.">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="canonical" href="https://example.com/pages/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact — Gul Wali">
+  <meta property="og:description" content="Have a project, a question or an idea? Send a message.">
+  <meta property="og:url" content="https://example.com/pages/contact.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      try {
+        var l = localStorage.getItem('gw_lang'); if (l) l = JSON.parse(l);
+        if (l === 'ps') { document.documentElement.lang = 'ps'; document.documentElement.dir = 'rtl'; }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Gul Wali — home">
+        <span class="brand-mark" aria-hidden="true">GW</span>
+        <span class="brand-text">GUL WALI</span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav-link" href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a class="nav-link" href="../index.html#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a class="nav-link" href="projects.html" data-i18n="nav.projects">Projects</a></li>
+          <li><a class="nav-link" href="services.html" data-i18n="nav.services">Services</a></li>
+          <li><a class="nav-link" href="resume.html" data-i18n="nav.resume">Resume</a></li>
+          <li><a class="nav-link" href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav-link" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+       <!-- langyage change button
+         <button class="icon-btn" type="button" data-lang-toggle data-i18n-aria-label="nav.switchLang" aria-label="Switch language">
+          <span data-lang-label>پښتو</span>
+        </button>
+      -->
+        <button class="icon-btn" type="button" data-theme-toggle data-i18n-aria-label="nav.switchTheme" aria-label="Switch theme" aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">◐</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-i18n-aria-label="nav.menu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <p class="breadcrumb">
+          <a href="../index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.contact">Contact</span>
+        </p>
+        <h1 class="page-title" data-i18n="contact.title">Get In Touch</h1>
+        <p class="page-sub" data-i18n="contact.sub">Have a project, a question or an idea? Send a message.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title" style="font-size:1.35rem">Send a Message</h2>
+
+          <form class="form" id="contact-form" novalidate style="margin-top:var(--sp-5)">
+            <div class="form-row">
+              <div class="field">
+                <label for="cf-name">
+                  <span data-i18n="contact.name">Name</span>
+                  <span class="req" aria-hidden="true">*</span>
+                  <span class="visually-hidden" data-i18n="contact.required">required</span>
+                </label>
+                <input type="text" id="cf-name" name="name" autocomplete="name" required aria-describedby="cf-name-error">
+                <span class="field__error" id="cf-name-error" aria-live="polite"></span>
+              </div>
+
+              <div class="field">
+                <label for="cf-email">
+                  <span data-i18n="contact.email">Email</span>
+                  <span class="req" aria-hidden="true">*</span>
+                  <span class="visually-hidden" data-i18n="contact.required">required</span>
+                </label>
+                <input type="email" id="cf-email" name="email" autocomplete="email" required aria-describedby="cf-email-error">
+                <span class="field__error" id="cf-email-error" aria-live="polite"></span>
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="cf-subject">
+                <span data-i18n="contact.subject">Subject</span>
+                <span class="req" aria-hidden="true">*</span>
+                <span class="visually-hidden" data-i18n="contact.required">required</span>
+              </label>
+              <input type="text" id="cf-subject" name="subject" required aria-describedby="cf-subject-error">
+              <span class="field__error" id="cf-subject-error" aria-live="polite"></span>
+            </div>
+
+            <div class="field">
+              <label for="cf-message">
+                <span data-i18n="contact.message">Message</span>
+                <span class="req" aria-hidden="true">*</span>
+                <span class="visually-hidden" data-i18n="contact.required">required</span>
+              </label>
+              <textarea id="cf-message" name="message" required aria-describedby="cf-message-error"></textarea>
+              <span class="field__error" id="cf-message-error" aria-live="polite"></span>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn btn--primary" type="submit" data-i18n="contact.send">Send Message</button>
+            </div>
+
+            <div class="form-status" id="contact-status" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+
+        <aside>
+          <h2 class="section-title" style="font-size:1.35rem" data-i18n="contact.info">Contact Information</h2>
+
+          <div class="contact-info__item">
+            <span class="contact-info__icon" aria-hidden="true">✉</span>
+            <div>
+              <div class="contact-info__label" data-i18n="contact.email">Email</div>
+              <a class="contact-info__value" id="contact-email" href="#">Not configured yet</a>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <span class="contact-info__icon" aria-hidden="true">☎</span>
+            <div>
+              <div class="contact-info__label">Phone</div>
+              <a class="contact-info__value" id="contact-phone" href="#">Not configured yet</a>
+            </div>
+          </div>
+
+          <div class="contact-info__item">
+            <span class="contact-info__icon" aria-hidden="true">⌖</span>
+            <div>
+              <div class="contact-info__label">Location</div>
+              <span class="contact-info__value" id="contact-location">Not configured yet</span>
+            </div>
+          </div>
+
+          <div class="contact-info__item" style="border-bottom:0">
+            <span class="contact-info__icon" aria-hidden="true">●</span>
+            <div>
+              <div class="contact-info__label" data-i18n="contact.availability">Availability</div>
+              <span class="contact-info__value" id="availability" data-available="true">
+                <span data-availability-text data-i18n="hero.available">Available for Projects</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="social-row" id="contact-social" style="margin-top:var(--sp-5)"></div>
+
+          <p class="card__text" style="margin-top:var(--sp-5);font-size:.8125rem">
+            This form stores messages locally in your browser. A real email backend is only used when
+            <code>contactEndpoint</code> is configured in <code>data/profile.json</code>.
+          </p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-brand__name">GUL WALI</p>
+          <p class="footer-brand__role">Web Designer &amp; Software Developer</p>
+          <p class="footer-brand__text" data-i18n="footer.tagline">Building useful digital experiences.</p>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="resume.html" data-i18n="nav.resume">Resume</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.social">Social Links</h3>
+          <div class="social-row" id="footer-social" style="margin-top:0"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> Gul Wali. <span data-i18n="footer.rights">All Rights Reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { initTheme } from '../js/theme.js';
+    import { initLanguage } from '../js/language.js';
+    import { initNavigation } from '../js/navigation.js';
+    import { initAnimations } from '../js/animations.js';
+    import { initContactForm } from '../js/contact.js';
+    import { loadData } from '../js/data.js';
+    import { buildSocialLinks } from '../js/app.js';
+
+    initTheme();
+    initLanguage();
+    initNavigation();
+    await initContactForm();
+
+    try {
+      const profile = await loadData('profile');
+      const { frag, count } = buildSocialLinks(profile);
+      ['footer-social', 'contact-social'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.textContent = '';
+        if (count === 0) {
+          el.innerHTML = `<p class="card__text" style="font-size:.8125rem">No social links configured yet.</p>`;
+        } else {
+          el.appendChild(frag.cloneNode(true));
+        }
+      });
+    } catch { /* optional */ }
+
+    document.querySelectorAll('[data-year]').forEach((el) => {
+      el.textContent = String(new Date().getFullYear());
+    });
+
+    initAnimations();
+  </script>
+</body>
+</html>

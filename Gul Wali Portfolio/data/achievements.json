@@ -1,0 +1,41 @@
+{
+  "note": "No awards, competitions or certificates have been invented. Only genuine, verifiable items are listed here.",
+  "items": [
+    {
+      "id": "six-apps",
+      "type": "project",
+      "icon": "★",
+      "title": "Six Completed Applications",
+      "titlePs": "شپږ بشپړ اپلیکیشنونه",
+      "description": "Built six real applications covering web and Android: Khoze Aw Pa Zra Pore Kise, Khandawar Baitona, Ibratnake Kise, Adabi Dewa, Muhasib and Afghan AI Prompt.",
+      "descriptionPs": "شپږ ریښتیني اپلیکیشنونه جوړ شول — د وېب او اندروید په برخه کې: خوږې او په زړه پورې کیسې، خوندور بیتونه، عبرتناکې کیسې، ادبي ډیوه، محاسب، او Afghan AI Prompt."
+    },
+    {
+      "id": "cs-student",
+      "type": "milestone",
+      "icon": "◆",
+      "title": "Computer Science Student — 3rd Year",
+      "titlePs": "د کمپیوټر ساینس محصل — دریم ټولګی",
+      "description": "Currently a third-year Computer Science student at the Narkzi Multidisciplinary Institute in Khost Province.",
+      "descriptionPs": "اوس مهال د خوست ولایت د نرکزي کثیرالرشتوي انسټیټیوټ د کمپیوټر ساینس د دریم ټولګي محصل یم."
+    },
+    {
+      "id": "it-networking",
+      "type": "milestone",
+      "icon": "⇄",
+      "title": "IT & Networking Knowledge",
+      "titlePs": "د IT او شبکې پوهه",
+      "description": "Working and studying in IT and networking alongside programming, combining software development with infrastructure knowledge.",
+      "descriptionPs": "د پروګرامینګ ترڅنګ د IT او شبکې په برخه کې کار او زده کړه — د سافټویر پراختیا او زیربنا پوهه یوځای."
+    },
+    {
+      "id": "self-taught",
+      "type": "learning",
+      "icon": "◈",
+      "title": "Continuous Self-Directed Learning",
+      "titlePs": "دوامداره خپلواکه زده کړه",
+      "description": "Continuously learning and building new projects — web development, Android apps and networking — while studying full-time.",
+      "descriptionPs": "دوامداره زده کړه او نوې پروژې — وېب پراختیا، اندروید اپلیکیشنونه او شبکه — د بشپړ وخت زده کړې سره یوځای."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="./" data-title-key="404.title">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>404 — Page Not Found | Gul Wali</title>
+  <meta name="description" content="The page you requested does not exist on this server.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/rtl.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      try {
+        var l = localStorage.getItem('gw_lang'); if (l) l = JSON.parse(l);
+        if (l === 'ps') { document.documentElement.lang = 'ps'; document.documentElement.dir = 'rtl'; }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <main id="main" class="err-wrap">
+    <div>
+      <p class="err-code">404</p>
+      <h1 class="section-title" style="margin-top:var(--sp-4)" data-i18n="404.title">PAGE NOT FOUND</h1>
+
+      <div class="err-term" role="img" aria-label="Terminal output showing a failed command">
+        <div><span style="color:var(--primary)">gulwali@portfolio:~$</span> cd /home</div>
+        <div class="bad" data-i18n="404.fail">Command failed.</div>
+        <div style="margin-top:.6rem">&nbsp;</div>
+        <div class="ok">$ ls</div>
+        <div>about/&nbsp;&nbsp;projects/&nbsp;&nbsp;services/&nbsp;&nbsp;blog/&nbsp;&nbsp;contact/</div>
+      </div>
+
+      <p class="card__text" data-i18n="404.hint">The page you requested does not exist on this server.</p>
+
+      <div class="btn-row" style="justify-content:center;margin-top:var(--sp-6)">
+        <a class="btn btn--primary" href="index.html" data-i18n="btn.returnHome">Return Home</a>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { initTheme } from './js/theme.js';
+    import { initLanguage } from './js/language.js';
+    initTheme();
+    initLanguage();
+  </script>
+</body>
+</html>

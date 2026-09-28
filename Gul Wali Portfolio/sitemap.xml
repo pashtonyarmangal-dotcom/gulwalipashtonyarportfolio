@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- CONFIGURE: replace https://example.com with your real domain -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://example.com/</loc><priority>1.0</priority></url>
+  <url><loc>https://example.com/pages/about.html</loc><priority>0.8</priority></url>
+  <url><loc>https://example.com/pages/projects.html</loc><priority>0.9</priority></url>
+  <url><loc>https://example.com/pages/services.html</loc><priority>0.8</priority></url>
+  <url><loc>https://example.com/pages/resume.html</loc><priority>0.8</priority></url>
+  <url><loc>https://example.com/pages/blog.html</loc><priority>0.7</priority></url>
+  <url><loc>https://example.com/pages/achievements.html</loc><priority>0.6</priority></url>
+  <url><loc>https://example.com/pages/contact.html</loc><priority>0.8</priority></url>
+</urlset>

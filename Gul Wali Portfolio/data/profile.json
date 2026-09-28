@@ -1,0 +1,59 @@
+{
+  "name": "Gul Wali Pashton Yar",
+  "namePs": "ګل ولی",
+  "fullName": "Gul Wali Pashtun Yar Mangal",
+  "fullNamePs": "ګل ولی پښتون یار منګل",
+  "initials": "GW",
+  "roles": ["Web Developer", "Android App Developer", "Computer Science Student", "IT & Networking"],
+  "rolesPs": ["وېب پراختیا کوونکی", "د اندروید اپلیکیشن جوړوونکی", "د کمپیوټر ساینس محصل", "IT او شبکه"],
+  "headline": "I Build Digital Experiences That Solve Real Problems.",
+  "headlinePs": "زه ډیجیټل تجربې جوړوم چې ریښتیني ستونزې حل کوي.",
+  "description": "I am a Computer Science student and developer building modern web and Android applications. I also work in IT and networking.",
+  "descriptionPs": "زه د کمپیوټر ساینس محصل او پراختیا کوونکی یم چې عصري وېب او اندروید اپلیکیشنونه جوړوم. همدارنګه په IT او شبکه کې هم کار کوم.",
+  "bio": "I am Gul Wali Pashton Yar Mangal, a second-year Computer Science student at the Markazi Kaser-ul-reshtawe Institute in Khost Afghanistan. I work on web development and build Android applications, and I have developed several programs including Khoze Aw Pa Zra Pore Kise, Khandawar Baitona, Ibratnake Kise, Adabi Dewa, Muhasib, and Afghan AI Prompt. Alongside programming, I also study and work in the IT and networking field. I currently live in the center of Khost Province.",
+  "bioPs": "زه ګل ولی پښتون یار منګل یم، د خوست ولایت د نرکزي کثیرالرشتوي انسټیټیوټ د کمپیوټر ساینس پوهنځي د دریم ټولګي محصل یم. زه د وېب ډیولپمنټ ترڅنګ د اندروید موبایلونو لپاره د اپلیکیشنونو په جوړولو کار کوم، او تر اوسه مې ډېر پروګرامونه جوړ کړي دي لکه: خوږې او په زړه پورې کیسې، خوندور بیتونه، عبرتناکې کیسې، ادبي ډیوه، محاسب، او Afghan AI Prompt. زه د پروګرامینګ ترڅنګ د IT د نیټورک څانګه کې هم خپل کار او زده کړې مخته وړم. اوس مهال د خوست ولایت مرکز کې اوسیږم.",
+  "philosophy": "Build things that work, keep them simple, and never ship something you would not use yourself.",
+  "philosophyPs": "هغه څه جوړ کړه چې کار کوي، ساده یې وساته، او هغه څه مه خپرو چې پخپله به یې نه کاروې.",
+  "currentFocus": [
+    "Web Development",
+    "Android Applications",
+    "Computer Science",
+    "IT & Networking",
+    "UI/UX Design"
+  ],
+  "currentFocusPs": [
+    "وېب پراختیا",
+    "اندروید اپلیکیشنونه",
+    "کمپیوټر ساینس",
+    "IT او شبکه",
+    "د کاروونکي تجربه"
+  ],
+  "location": "Khost, Afghanistan",
+  "locationPs": "خوست، افغانستان",
+  "email": "pashtonyarmangal@gmail.com",
+  "phone": "0093773059833",
+  "availability": "available",
+  "resumeUrl": "assets/resume/gul-wali-resume.pdf",
+  "profileImage": "assets/images/profile/my-photo.webp",
+  "contactEndpoint": "https://formspree.io/f/mgavnjwn",
+  "social": {
+    "github": "https://github.com/pashtonyarmangal-dotcom",
+    "facebook": "https://facebook.com/pashtonyarmangal",
+    "telegram": "https://t.me+93773059833",
+    "youtube": "",
+    "linkedin": "",
+    "whatsapp": "https://wa.me/93773059833",
+    "tiktok": "https//tiktok.com/pashtonyarmangal4"
+  },
+  "stats": [
+    { "key": "projects", "value": 6, "label": "Projects", "labelPs": "پروژې" },
+    { "key": "technologies", "value": 14, "label": "Technologies", "labelPs": "ټیکنالوژۍ" },
+    { "key": "certificates", "value": 0, "label": "Certificates", "labelPs": "سندونه" },
+    { "key": "learning", "value": 3, "label": "Years Learning", "labelPs": "د زده کړې کلونه" }
+  ]
+}
+
+
+
+
+ 

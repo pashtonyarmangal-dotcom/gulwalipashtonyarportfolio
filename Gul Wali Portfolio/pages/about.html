@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-root="../" data-title-key="nav.about">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About — Gul Wali</title>
+  <meta name="description" content="About Gul Wali: web designer, web developer and software developer building modern, responsive and accessible digital products.">
+  <meta name="theme-color" content="#070a0c">
+  <link rel="canonical" href="https://example.com/pages/about.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About — Gul Wali">
+  <meta property="og:description" content="Web designer and software developer building modern, responsive digital products.">
+  <meta property="og:url" content="https://example.com/pages/about.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="../css/rtl.css">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('gw_theme'); if (t) t = JSON.parse(t);
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'dark'); }
+      try {
+        var l = localStorage.getItem('gw_lang'); if (l) l = JSON.parse(l);
+        if (l === 'ps') { document.documentElement.lang = 'ps'; document.documentElement.dir = 'rtl'; }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="../index.html" aria-label="Gul Wali — home">
+        <span class="brand-mark" aria-hidden="true">GW</span>
+        <span class="brand-text">GUL WALI</span>
+      </a>
+      <nav class="nav" id="primary-nav" aria-label="Primary navigation">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="../index.html" data-i18n="nav.home">Home</a></li>
+          <li><a class="nav-link" href="about.html" data-i18n="nav.about">About</a></li>
+          <li><a class="nav-link" href="../index.html#skills" data-i18n="nav.skills">Skills</a></li>
+          <li><a class="nav-link" href="projects.html" data-i18n="nav.projects">Projects</a></li>
+          <li><a class="nav-link" href="services.html" data-i18n="nav.services">Services</a></li>
+          <li><a class="nav-link" href="resume.html" data-i18n="nav.resume">Resume</a></li>
+          <li><a class="nav-link" href="blog.html" data-i18n="nav.blog">Blog</a></li>
+          <li><a class="nav-link" href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+      <!--  Language Button Change 
+        
+         <button class="icon-btn" type="button" data-lang-toggle data-i18n-aria-label="nav.switchLang" aria-label="Switch language">
+          <span data-lang-label>پښتو</span> 
+      
+          --> 
+        </button>
+        <button class="icon-btn" type="button" data-theme-toggle data-i18n-aria-label="nav.switchTheme" aria-label="Switch theme" aria-pressed="false">
+          <span data-theme-icon aria-hidden="true">◐</span>
+        </button>
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" data-i18n-aria-label="nav.menu" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container page-hero__inner">
+        <p class="breadcrumb">
+          <a href="../index.html" data-i18n="nav.home">Home</a> / <span data-i18n="nav.about">About</span>
+        </p>
+        <h1 class="page-title" data-i18n="section.about">About Me</h1>
+        <p class="page-sub" data-i18n="section.aboutSub">Who I am and what I build.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="grid grid--2" style="align-items:start">
+          <div>
+            <h2 class="section-title" style="font-size:1.4rem">Introduction</h2>
+            <p class="card__text" id="about-bio" style="font-size:1.0625rem;margin-top:var(--sp-3)">Loading profile…</p>
+
+            <h2 class="section-title" style="font-size:1.4rem;margin-top:var(--sp-6)" data-i18n="about.philosophy">Philosophy</h2>
+            <p class="card__text" id="about-philosophy" style="margin-top:var(--sp-3)"></p>
+
+            <h2 class="section-title" style="font-size:1.4rem;margin-top:var(--sp-6)" data-i18n="about.currentFocus">Current Focus</h2>
+            <ul id="about-focus" class="tag-row" style="margin-top:var(--sp-3);display:flex;flex-wrap:wrap;gap:.35rem"></ul>
+
+            <h2 class="section-title" style="font-size:1.4rem;margin-top:var(--sp-6)" data-i18n="nav.skills">Skills</h2>
+            <div class="grid grid--2" id="skills-grid" style="margin-top:var(--sp-4)">
+              <p class="state">Loading skills…</p>
+            </div>
+          </div>
+
+          <aside class="id-card" aria-labelledby="identity-title">
+            <h3 class="visually-hidden" id="identity-title" data-i18n="about.identity">Developer Identity</h3>
+            <img id="hero-image" src="../assets/images/profile/profile.svg" alt="Gul Wali profile picture"
+                 width="480" height="480" style="border-radius:var(--radius);border:1px solid var(--border);margin-bottom:var(--sp-5)" loading="lazy" decoding="async">
+            <p class="id-card__name">GUL WALI</p>
+            <p class="id-card__role">Web / Software Developer</p>
+            <p class="id-card__line">Building useful digital products.</p>
+            <dl class="id-card__meta" id="identity-meta"></dl>
+            <div class="social-row" id="hero-social" style="margin-top:var(--sp-5)"></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">06</span>
+          <h2 class="section-title" data-i18n="section.experience">Experience</h2>
+        </div>
+        <div class="timeline" id="experience-timeline"><p class="state">Loading experience…</p></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">07</span>
+          <h2 class="section-title" data-i18n="section.education">Education</h2>
+        </div>
+        <div class="timeline" id="education-timeline"><p class="state">Loading education…</p></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-brand__name">GUL WALI</p>
+          <p class="footer-brand__role">Web Designer &amp; Software Developer</p>
+          <p class="footer-brand__text" data-i18n="footer.tagline">Building useful digital experiences.</p>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.quickLinks">Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="../index.html" data-i18n="nav.home">Home</a></li>
+            <li><a href="projects.html" data-i18n="nav.projects">Projects</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+            <li><a href="resume.html" data-i18n="nav.resume">Resume</a></li>
+            <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer-title" data-i18n="footer.social">Social Links</h3>
+          <div class="social-row" id="footer-social" style="margin-top:0"></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© <span data-year>2026</span> Gul Wali. <span data-i18n="footer.rights">All Rights Reserved.</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/app.js"></script>
+</body>
+</html>
