@@ -1,2 +1,2 @@
 # gulwalipashtonyarportfolio
-it is my portfolio websir
+it is my portfolio websie
