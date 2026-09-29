@@ -31,7 +31,7 @@
   "location": "Khost, Afghanistan",
   "locationPs": "خوست، افغانستان",
   "email": "pashtonyarmangal@gmail.com",
-  "phone": "0093773059833",
+  "phone": "+93773059833",
   "availability": "available",
   "resumeUrl": "assets/resume/gul-wali-resume.pdf",
   "profileImage": "assets/images/profile/my-photo.webp",
@@ -48,8 +48,8 @@
   "stats": [
     { "key": "projects", "value": 6, "label": "Projects", "labelPs": "پروژې" },
     { "key": "technologies", "value": 14, "label": "Technologies", "labelPs": "ټیکنالوژۍ" },
-    { "key": "certificates", "value": 0, "label": "Certificates", "labelPs": "سندونه" },
-    { "key": "learning", "value": 3, "label": "Years Learning", "labelPs": "د زده کړې کلونه" }
+    { "key": "certificates", "value": 2, "label": "Certificates", "labelPs": "سندونه" },
+    { "key": "learning", "value": 1+, "label": "Years Learning", "labelPs": "د زده کړې کلونه" }
   ]
 }
 
